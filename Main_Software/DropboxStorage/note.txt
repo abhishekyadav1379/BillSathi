@@ -1,0 +1,9 @@
+creds = {
+  "access_token": "sl.Bi_TPinGt_SzrGWycVTAflnTYEh4lKQhAnR4_0gvZvrg9s4diH5_Z0rs2b2t8B8NrMpPEbprXNcOvDGyL5t_juzgXkmli6tk0ddBv8OesZfr5ZriixPyPstGNO0AK5qocOR5xzsvniSd",
+  "token_type": "bearer",
+  "expires_in": 14399,
+  "refresh_token": "fQJ_d-KEgTEAAAAAAAAAAYq0J7mTBqNQQOABxb7IKu3-fgcAzaiiH_Yr03NHjHJW",
+  "scope": "account_info.read files.content.read files.content.write files.metadata.read files.metadata.write",
+  "uid": "831503987",
+  "account_id": "dbid:AADXBDmNeFRe-h0INyFOUypuSWL5lK5BNeU",
+}

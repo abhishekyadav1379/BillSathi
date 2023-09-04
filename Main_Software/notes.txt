@@ -1,0 +1,24 @@
+-- SELECT 
+--     time,
+--     case when substr(time,-2) = 'PM' and substr(time,1,2) != '12' then 
+-- (substr(time,1,2) + 12) || substr(time,3,6) ELSE SUBSTR(time,1,8) end AS converted_time
+-- FROM Money;
+-- 
+-- UPDATE Money
+-- SET time = case when substr(time,-2) = 'PM' and substr(time,1,2) != '12' then 
+-- (substr(time,1,2) + 12) || substr(time,3,6) ELSE SUBSTR(time,1,8) end ;
+
+SELECT time,
+    CASE
+        WHEN CAST(strftime('%H', time) AS INTEGER) >= 12 THEN
+            CASE
+                WHEN CAST(strftime('%H', time) AS INTEGER) > 12 THEN
+                    printf('%02d', CAST(strftime('%H', time) AS INTEGER) - 12)
+                ELSE
+                    '12'
+            END || ':' || 
+            strftime('%M:%S', time) || ' PM'
+        ELSE
+            time || ' AM'
+    END AS converted_time
+FROM Money;

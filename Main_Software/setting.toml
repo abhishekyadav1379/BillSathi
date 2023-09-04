@@ -1,0 +1,7 @@
+[Database]
+path = "./Main_Software/Database/mahendra.db"
+temp = 0
+
+[Account]
+id = "Mahendra2"
+pass = "1379"

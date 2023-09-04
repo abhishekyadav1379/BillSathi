@@ -1,0 +1,38 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>calendar.png</file>
+    <file>copy-96.png</file>
+    <file>copywriting.png</file>
+    <file>driver-license.png</file>
+    <file>icons8-address-96.png</file>
+    <file>icons8-admin-40.png</file>
+    <file>icons8-contact-details-50.png</file>
+    <file>icons8-id-80.png</file>
+    <file>icons8-initiate-money-transfer-100.png</file>
+    <file>icons8-interaction-64.png</file>
+    <file>icons8-ledger-67.png</file>
+    <file>icons8-message-80.png</file>
+    <file>icons8-name-80.png</file>
+    <file>icons8-other-96.png</file>
+    <file>icons8-pdf-100.png</file>
+    <file>icons8-phone-100.png</file>
+    <file>icons8-print-64.png</file>
+    <file>icons8-redo-96.png</file>
+    <file>icons8-setting-64.png</file>
+    <file>icons8-share-96.png</file>
+    <file>icons8-stock-64.png</file>
+    <file>icons8-submit-60.png</file>
+    <file>icons8-undo-96.png</file>
+    <file>in-stock.png</file>
+    <file>labour_icon.png</file>
+    <file>location-pin.png</file>
+    <file>logo.png</file>
+    <file>medical-prescription.png</file>
+    <file>medical-record.png</file>
+    <file>microphone-black-shape.png</file>
+    <file>new_entry_icon.png</file>
+    <file>other.png</file>
+    <file>record.png</file>
+    <file>telephone.png</file>
+  </qresource>
+</RCC>

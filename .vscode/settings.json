@@ -1,0 +1,13 @@
+{
+    "sqltools.useNodeRuntime": true,
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "abhi",
+            "database": "${workspaceFolder:Pyqt}/Main_sotware/mahendra.db"
+        }
+    ],
+    "liveServer.settings.port": 5741,
+    "python.analysis.typeCheckingMode": "basic"
+}

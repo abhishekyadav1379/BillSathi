@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Invoice</title>
+    <style>
+        body {
+            line-height: 1.2;
+            margin-left: 1px;
+            margin-right: 1px;
+            padding: 0;
+            font-family:  Noto Sans Devanagari,Arial,sans-serif; 
+            font-size: 16px;
+        }
+        .container {
+            margin: 0;
+            margin-left: 1px;
+            margin-right: 1px;
+            padding: 0px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .company-name {
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .address {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            text-align: center;
+        }
+        .customer-details {
+            font-size: 18px;
+            margin-top: 0px;
+            margin-bottom: 20px;
+        }
+        table tr:first-child {
+            border-top: 7px solid black; /* You can change the color and style as needed */
+          }
+        
+          table tr:last-child {
+            border-bottom: 7px solid black; /* You can change the color and style as needed */
+            border-top: 7px solid black;
+            font-size: 20px;
+          }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: 0px;
+            border: 3px solid black;
+        }
+        .table th, .table td {
+            font-family: Mangal, Arial, sans-serif; 
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        .payment-details {
+            font-family: Mangal, Arial, sans-serif; 
+            margin-top: 20px;
+        }
+        
+        .tagline {
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src = "data:image/png;base64, {{base64_image}} alt="Company Logo" height="150px" width="300px">
+            <!-- <img src="../images/logo.png" alt="Company Logo" height="100px" width="200px"> Add your image here -->
+            <!-- <div class="company-name">New Mahendra Traders</div> -->
+            <div class="address">Ahrauli Shekh, Pukhrayan - 209111<br>9450728660, 9936103300<br>ESTIMATE</div>
+        </div>
+        
+        <div class="customer-details">
+            <div><strong>ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</strong> {{ id }}</div>
+            <div><strong><span style="font-size:18px;">नाम</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</strong> {{ customer_name }}</div>
+            <div><strong><span style="font-size:18px;">पता </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :</strong> {{ customer_address }}</div>
+            <div><strong><span style="font-size:18px;">फोन नंबर</span> &nbsp;:</strong> {{ customer_phone }}</div>
+            <div><strong><span style="font-size:18px;">तारीख</span> &nbsp;&nbsp;&nbsp;&nbsp; :</strong> {{ invoice_date }}</div>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Rate</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td><strong>{{ product.name }}</strong></td>
+                    <td>{{ product.quantity }}</td>
+                    <td>{{ product.rate }}</td>
+                    <td>{{ product.value }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="payment-details">
+            <div><strong><span style="font-size:18px;">माध्यम: </span></strong>{{payment_method}}</div>
+            <div><strong><span style="font-size:18px;">भुगतान: </span></strong>₹  {{ paid_amount }}</div>
+            <div><strong><span style="font-size:18px;">कुल: </span></strong> ₹ {{ total_price }}</div>
+            <div><strong><span style="font-size:18px;">बकाया: </span></strong> ₹ {{ remaining_amount }}</div>
+        </div>
+
+        <div class="tagline">
+            <p>Thank you, Please visit again</p>
+        </div>
+    </div>
+</body>
+</html>
