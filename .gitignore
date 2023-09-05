@@ -1,1 +1,3 @@
-*.ini
+Main_Software/config.ini
+google_api.json
+Main_Software/DropboxStorage\note.txt
