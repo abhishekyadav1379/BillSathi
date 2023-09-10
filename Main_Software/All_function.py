@@ -1,4 +1,5 @@
 import sqlite3
+# import pretty_errors
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QMenu
 from PyQt6.QtCore import Qt
 import configparser
@@ -12,19 +13,20 @@ import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
 from PyQt6.QtCore import QTimer
 import fitz
+import requests
 import toml
 
 class all_function():
     def __init__(self):
         # self.database_path = "./Main_Software/Database/mahendra.db"
-        self.database_path = self.read_toml_section_value("Database","path")
+        self.database_path = self.read_toml_section_value(r'Main_Software\setting.toml',"Database","path")
         # path_temp = 0
         # if path_changed == 1:
         #     self.copy_file("./Main_Software/Database/mahendra.db","./Main_Software/Database/","mahendra_temp.db")
         #     self.database_path = "./Main_Software/Database/mahendra.db"
         #     path_temp = 1
             
-        #     self.write_toml_section_value("Database","temp", 0)
+        #     self.write_toml_section_value(r"Main_Software\setting.toml","Database","temp", 0)
         
         # if path_temp == 1:
             
@@ -211,7 +213,7 @@ class all_function():
             zoom_y = 16.0  # vertical zoom
             mat = fitz.Matrix(zoom_x, zoom_y)  # zoom factor 2 in each dimension
             pix = page.get_pixmap(matrix=mat)
-            pix.save("invoice.png")  # store image as a PNG
+            pix.save("./Main_Software/Image_pdf/invoice.png")  # store image as a PNG
             break
     
     def today_sale(self):
@@ -260,8 +262,8 @@ class all_function():
             self.insert_db(f"update Profit_table set profit = ? where date = ?",(total_profit, self.today_date))
         # print(check_profit_date) 
 
-    def read_toml_section_value(self, section_name, value_key):
-        file_path = r'Main_Software\setting.toml'
+    def read_toml_section_value(self, file_path,section_name, value_key):
+        # file_path = r'Main_Software\setting.toml'
         try:
             with open(file_path, 'r') as toml_file:
                 toml_data = toml.load(toml_file)
@@ -283,8 +285,8 @@ class all_function():
         except toml.TomlDecodeError:
             return "Error decoding the TOML file."
 
-    def write_toml_section_value(self, section_name, value_key, value):
-        file_path = r"Main_Software\setting.toml"
+    def write_toml_section_value(self,file_path, section_name, value_key, value):
+        # file_path = r"Main_Software\setting.toml"
         try:
             # Load existing TOML data if it exists, or create an empty dictionary
             try:
@@ -306,8 +308,48 @@ class all_function():
         except Exception as e:
             return f"Error: {str(e)}" 
         
+    def send_pdf_with_text_to_telegram(self, pdf_path,file_name, caption):
+        api_token = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "api_token")
+        chat_id = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "chat_id")
+        # api_token = '6536259159:AAGaU6QTIoiiSdpEawLb0MAvktwgdziXoUY'
+        # chat_id = '1010585302'
+        api_url = f'https://api.telegram.org/bot{api_token}/sendDocument'
+
+        try:
+            with open(pdf_path, 'rb') as pdf_file:
+                files = {'document': (file_name,pdf_file)}
+                data = {'chat_id': chat_id, 'caption': caption}
+                response = requests.post(api_url, data=data, files=files)
+                # print(response.text)
+        except Exception as e:
+            print(e)
         
-        
+    def send_image_with_caption_to_telegram(self, image_path, caption):
+        api_token = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "api_token")
+        chat_id = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "chat_id")
+        api_url = f'https://api.telegram.org/bot{api_token}/sendPhoto'
+
+        try:
+            with open(image_path, 'rb') as image_file:
+                files = {'photo': ("image.jpg", image_file)}
+                data = {'chat_id': chat_id, 'caption': caption}
+                response = requests.post(api_url, data=data, files=files)
+                print(response.text)
+        except Exception as e:
+            print(e)
+    
+    def send_message_to_telegram(self,  message):
+        api_token = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "api_token")
+        chat_id = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "chat_id")
+        api_url = f'https://api.telegram.org/bot{api_token}/sendMessage'
+
+        try:
+            data = {'chat_id': chat_id, 'text': message}
+            response = requests.post(api_url, data=data)
+            # print(response.text)
+        except Exception as e:
+            print(e)
+
 ######### ToolTip class #############           
 class TooltipDelegate(QtWidgets.QStyledItemDelegate):
     def __init__(self, parent=None):

@@ -54,7 +54,7 @@ class InvoicePdf:
         pdf.set_font("Arial", size=8)
         pdf.cell(w, txt="Thank you, Please visit again", ln=1, align="C")
         pdf.cell(w, txt="Mahendratraders786@gmail.com", ln=1, align="C")
-        pdf.output("invoice.pdf")
+        pdf.output("./Main_Software/Image_pdf/invoice.pdf")
 
     @staticmethod
     def generate_customer_details(id):
@@ -133,7 +133,7 @@ class InvoicePdf:
         pdf.set_font("Arial", size=8)
         pdf.cell(w, txt="Thank you, Please visit again", ln=1, align="C")
         pdf.cell(w, txt="Mahendratraders786@gmail.com", ln=1, align="C")
-        pdf.output("customer_details.pdf")
+        pdf.output("./Main_Software/Image_pdf/customer_details.pdf")
 
 id = "20345678"
 name = "Pbhishek Yadav"

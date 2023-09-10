@@ -150,8 +150,8 @@ class Ui_Others(object):
             self.column_name = ["id","name","Address","total"]
             self.query = f"select Customer.id,Customer.name,customer.address, sum(total -give) as new_total from money,Customer where customer.id = money.id group by Customer.id order by new_total DESC"
         elif selected_Value == "Annual record":
-            self.column_name = ["year","udhari","total_sum"]
-            self.query = '''SELECT substr(date, 7, 4) AS year,sum(total) - sum(Give) as udhari, SUM(total) AS total_sum
+            self.column_name = ["year","Remianing","total_sum"]
+            self.query = '''SELECT substr(date, 0, 5) AS year,sum(total) - sum(Give) as udhari, SUM(total) AS total_sum
                             FROM Money
                             GROUP BY year
                             ORDER BY year;'''

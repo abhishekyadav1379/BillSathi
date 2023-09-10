@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="icons">
+    <file>mahendra_colored_logo.png</file>
+    <file>icons8-telegram-480.png</file>
+    <file>mahendra_logo.png</file>
+    <file>compony_logo.png</file>
     <file>calendar.png</file>
     <file>copy-96.png</file>
     <file>copywriting.png</file>

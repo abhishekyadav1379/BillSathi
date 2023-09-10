@@ -119,6 +119,7 @@ class NewEntry(QtWidgets.QDialog):
         self.ui.lineEdit_address.textEdited.connect(self.on_text_edited)
         self.ui.lineEdit_name.editingFinished.connect(lambda: self.on_text_finished(self.ui.lineEdit_name))
         self.ui.lineEdit_address.editingFinished.connect(lambda: self.on_text_finished(self.ui.lineEdit_address))
+        self.ui.pushButton_telegram.clicked.connect(self.send_image_to_telegram)
         self.completer.activated.connect(self.on_completer_activated_or_clicked)
         
         self.last_date = self.ui.date_label.text()
@@ -223,8 +224,8 @@ class NewEntry(QtWidgets.QDialog):
         # InvoicePdf.generate_invoice(id, name, addr, phone, table,date,time, method, giving, total,remaining)
         Invoice_generator.InvoiceGenerator.generate_invoice_pdf(id, name, addr, phone, date,table, method, total, giving, remaining)
         fn = all_function()
-        fn.convert_pdf_to_image("./Main_Software/Invoice.pdf")
-        PrinterManager.print_image("Everycom-80-Series", "invoice.png")
+        fn.convert_pdf_to_image("./Main_Software/Image_pdf/Invoice.pdf")
+        PrinterManager.print_image("Everycom-80-Series", "./Main_Software/Image_pdf/invoice.png")
         self.submit()
         print("prnt complete")
         # self.open_pdf_in_default_browser()
@@ -752,6 +753,13 @@ class NewEntry(QtWidgets.QDialog):
         timer = QTimer(self)
         timer.timeout.connect(popup.close)
         timer.start(1000)
+        
+    def send_image_to_telegram(self):
+        name,addr,phone,id = self.cust_Details()
+        fn = all_function()
+        fn.send_pdf_with_text_to_telegram(r"Main_Software\Image_pdf\invoice.pdf",f"{name}_{id}_estimate.pdf",f"{id}\n{name}\n{addr}\n{phone}")
+        # fn.send_image_with_caption_to_telegram(r"Main_Software\Image_pdf\invoice.png",f"{id}\n{name}\n{addr}\n{phone}")
+        # print("send_image_to_telegram")
                 
     def submit(self):
         if len(self.cust_Details()) == 0:

@@ -11,10 +11,10 @@ class PrinterManager:
         hDC = win32ui.CreateDC()
         hDC.CreatePrinterDC(printer_name)
         printer_size = hDC.GetDeviceCaps(PrinterManager.PHYSICALWIDTH), hDC.GetDeviceCaps(PrinterManager.PHYSICALHEIGHT)
-        print(printer_size)
+        # print(printer_size)
         
         bmp = Image.open(file_name)
-        print("image size:", bmp.size[0], bmp.size[1])
+        # print("image size:", bmp.size[0], bmp.size[1])
         img_width = bmp.size[0]
         img_height = bmp.size[1]
 
@@ -23,7 +23,7 @@ class PrinterManager:
 
         printer_width = printer_size[0]
         printer_height = int(img_height * (1678 / 10000))  # You can adjust this calculation as needed
-        print(f"printer size: {printer_width}, {printer_height}")
+        # print(f"printer size: {printer_width}, {printer_height}")
 
         dib = ImageWin.Dib(bmp)
         dib.draw(hDC.GetHandleOutput(), (0, 0, printer_width, printer_height))

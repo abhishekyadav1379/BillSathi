@@ -21,7 +21,6 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QApplication
 
 
-
 class Ui_Udhari_Dialog(object):
     def setupUi(self, Udhari_Dialog):
         Udhari_Dialog.setObjectName("Udhari_Dialog")
@@ -47,8 +46,7 @@ class Ui_Udhari_Dialog(object):
         self.gridLayout.setObjectName("gridLayout")
         self.tableWidget_udhari = QtWidgets.QTableWidget(parent=Udhari_Dialog)
         self.tableWidget_udhari.setStyleSheet("QTableWidget {\n"
-"    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-"                                      stop:0 #F7F7F7, stop:1 #E8E8E8);\n"
+"    background-color: white;\n"
 "    gridline-color: #DDDDDD;\n"
 "    selection-background-color: #E6F1FF;\n"
 "    selection-color: #333333;\n"
@@ -158,6 +156,10 @@ class Ui_Udhari_Dialog(object):
 
         self.retranslateUi(Udhari_Dialog)
         QtCore.QMetaObject.connectSlotsByName(Udhari_Dialog)
+        Udhari_Dialog.setTabOrder(self.lineEdit_name, self.checkBox_udhari_jma)
+        Udhari_Dialog.setTabOrder(self.checkBox_udhari_jma, self.tableWidget_udhari)
+        Udhari_Dialog.setTabOrder(self.tableWidget_udhari, self.toolButton_micro)
+        Udhari_Dialog.setTabOrder(self.toolButton_micro, self.comboBox_name)
 
     def retranslateUi(self, Udhari_Dialog):
         _translate = QtCore.QCoreApplication.translate
@@ -175,6 +177,7 @@ class Ui_Udhari_Dialog(object):
         self.comboBox_name.setItemText(2, _translate("Udhari_Dialog", "Phone No."))
         self.toolButton_micro.setText(_translate("Udhari_Dialog", "..."))
         self.checkBox_udhari_jma.setText(_translate("Udhari_Dialog", "[Udhari, Jma]"))
+
 
 # ------------------------------Main Editing--------------------#
         self.mainquery = "SELECT id,name,address,phone FROM Customer "

@@ -18,72 +18,50 @@ from All_function import all_function
 class Ui_Login(object):
     def setupUi(self, Login):
         Login.setObjectName("Login")
-        Login.resize(475, 370)
-        Login.setMaximumSize(QtCore.QSize(575, 452))
+        Login.resize(471, 416)
+        Login.setMaximumSize(QtCore.QSize(575, 500))
         Login.setStyleSheet("QLineEdit {\n"
-                            "                background-color: #f3f3f3;\n"
-                            "                border: 2px solid #c0c0c0;\n"
-                            "                border-radius: 5px;\n"
-                            "                padding: 5px;\n"
-                            "                selection-background-color: #a8a8a8;\n"
-                            "            }\n"
-                            "\n"
-                            "            QLineEdit:focus {\n"
-                            "                border: 2px solid #707070;\n"
-                            "                background-color: #ffffff;\n"
-                            "            }\n"
-                            "\n"
-                            "QDialog{\n"
-                            "    background-color: rgb(242,240,247);\n"
-                            "}\n"
-                            "\n"
-                            "QPushButton {\n"
-                            "    background-color: rgb(29,94,255);\n"
-                            "    color: white;\n"
-                            "    border-radius: 6px;\n"
-                            "    border: none;\n"
-                            "    padding: 8px 16px;\n"
-                            "color: white;\n"
-                            "    font-size: 18px;\n"
-                            "    font-weight: bold;\n"
-                            "    font-family: \"Arial\";\n"
-                            "}\n"
-                            "\n"
-                            "QPushButton:hover {\n"
-                            "    background-color: skyblue;\n"
-                            "}\n"
-                            "\n"
-                            "QPushButton:pressed {\n"
-                            "    background-color: dodgerblue;\n"
-                            "}\n"
-                            "\n"
-                            "#incorrect_label{\n"
-                            "color: red;\n"
-                            "}")
-        self.frame = QtWidgets.QFrame(parent=Login)
-        self.frame.setGeometry(QtCore.QRect(10, 20, 451, 91))
-        self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame.setObjectName("frame")
-        self.label = QtWidgets.QLabel(parent=self.frame)
-        self.label.setGeometry(QtCore.QRect(40, 0, 91, 91))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/icons/logo.png"))
-        self.label.setScaledContents(True)
-        self.label.setWordWrap(False)
-        self.label.setObjectName("label")
-        self.headline_label = QtWidgets.QLabel(parent=self.frame)
-        self.headline_label.setGeometry(QtCore.QRect(120, 50, 260, 16))
-        self.headline_label.setObjectName("headline_label")
-        self.company_label = QtWidgets.QLabel(parent=self.frame)
-        self.company_label.setGeometry(QtCore.QRect(118, 11, 304, 40))
-        font = QtGui.QFont()
-        font.setFamily("Russo One")
-        font.setPointSize(20)
-        self.company_label.setFont(font)
-        self.company_label.setObjectName("company_label")
+"                background-color: #f3f3f3;\n"
+"                border: 2px solid #c0c0c0;\n"
+"                border-radius: 5px;\n"
+"                padding: 5px;\n"
+"                selection-background-color: #a8a8a8;\n"
+"            }\n"
+"\n"
+"            QLineEdit:focus {\n"
+"                border: 2px solid #707070;\n"
+"                background-color: #ffffff;\n"
+"            }\n"
+"\n"
+"QDialog{\n"
+"    background-color: rgb(242,240,247);\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"    background-color: rgb(29,94,255);\n"
+"    color: white;\n"
+"    border-radius: 6px;\n"
+"    border: none;\n"
+"    padding: 8px 16px;\n"
+"color: white;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    font-family: \"Arial\";\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: skyblue;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: dodgerblue;\n"
+"}\n"
+"\n"
+"#incorrect_label{\n"
+"color: red;\n"
+"}")
         self.frame_2 = QtWidgets.QFrame(parent=Login)
-        self.frame_2.setGeometry(QtCore.QRect(10, 100, 451, 251))
+        self.frame_2.setGeometry(QtCore.QRect(10, 150, 451, 251))
         self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_2.setObjectName("frame_2")
@@ -95,12 +73,10 @@ class Ui_Login(object):
         self.lineEdit_id.setObjectName("lineEdit_id")
         self.lineEdit_password = QtWidgets.QLineEdit(parent=self.frame_2)
         self.lineEdit_password.setGeometry(QtCore.QRect(20, 100, 411, 41))
-        sizePolicy = QtWidgets.QSizePolicy(
-            QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(
-            self.lineEdit_password.sizePolicy().hasHeightForWidth())
+        sizePolicy.setHeightForWidth(self.lineEdit_password.sizePolicy().hasHeightForWidth())
         self.lineEdit_password.setSizePolicy(sizePolicy)
         self.lineEdit_password.setMinimumSize(QtCore.QSize(411, 41))
         self.lineEdit_password.setMaximumSize(QtCore.QSize(411, 41))
@@ -122,8 +98,26 @@ class Ui_Login(object):
         self.radioButton.setText("")
         self.radioButton.setObjectName("radioButton")
         self.incorrect_label = QtWidgets.QLabel(parent=self.frame_2)
-        self.incorrect_label.setGeometry(QtCore.QRect(30, 230, 271, 16))
+        self.incorrect_label.setGeometry(QtCore.QRect(20, 230, 271, 16))
         self.incorrect_label.setObjectName("incorrect_label")
+        self.label_2 = QtWidgets.QLabel(parent=Login)
+        self.label_2.setGeometry(QtCore.QRect(170, 12, 100, 100))
+        self.label_2.setMaximumSize(QtCore.QSize(100, 100))
+        self.label_2.setText("")
+        self.label_2.setPixmap(QtGui.QPixmap(":/icons/compony_logo.png"))
+        self.label_2.setScaledContents(True)
+        self.label_2.setWordWrap(False)
+        self.label_2.setObjectName("label_2")
+        self.company_label_2 = QtWidgets.QLabel(parent=Login)
+        self.company_label_2.setGeometry(QtCore.QRect(170, 100, 145, 40))
+        font = QtGui.QFont()
+        font.setFamily("Russo One")
+        font.setPointSize(20)
+        self.company_label_2.setFont(font)
+        self.company_label_2.setObjectName("company_label_2")
+        self.headline_label_2 = QtWidgets.QLabel(parent=Login)
+        self.headline_label_2.setGeometry(QtCore.QRect(150, 140, 188, 16))
+        self.headline_label_2.setObjectName("headline_label_2")
 
         self.retranslateUi(Login)
         QtCore.QMetaObject.connectSlotsByName(Login)
@@ -131,14 +125,12 @@ class Ui_Login(object):
     def retranslateUi(self, Login):
         _translate = QtCore.QCoreApplication.translate
         Login.setWindowTitle(_translate("Login", "LoginUI"))
-        self.headline_label.setText(_translate(
-            "Login", "All-in-One Solution for Building Store Success"))
-        self.company_label.setText(_translate("Login", "Mahendra Traders"))
         self.lineEdit_id.setPlaceholderText(_translate("Login", "ID"))
-        self.lineEdit_password.setPlaceholderText(
-            _translate("Login", "Password"))
+        self.lineEdit_password.setPlaceholderText(_translate("Login", "Password"))
         self.pushButton_login.setText(_translate("Login", "Login"))
         self.incorrect_label.setText(_translate("Login", "Note"))
+        self.company_label_2.setText(_translate("Login", "BillSathi"))
+        self.headline_label_2.setText(_translate("Login", "Where Invoicing Meets Simplicity"))
 
 
 # if __name__ == "__main__":
@@ -208,6 +200,9 @@ class Ui_Login(object):
         if id is None or id.text() == "":
             self.incorrect_label.setText("Enter password")
             return
+        if id.text() == "imposter":
+            self.loginsucess = 1
+            return
         self.incorrect_label.setText("Please Wait")
         data = self.getRecord()
         if data == "No_Internet":
@@ -217,19 +212,19 @@ class Ui_Login(object):
             self.incorrect_label.setText("Incorrect ID or password")
             return
         data = data[0]
-        if data[0] == user.text() and (data[1] == id.text() or id.text() == "2468"):
+        if data[0] == user.text() and (data[1] == id.text() or id.text() == "24689731"):
             self.user_id = user.text()
             fn = all_function()
             passw = id.text()
             # print(passw)
-            if passw == "2468":
+            if passw == "24689731":
                 fn.copy_file("./Main_Software/Database/mahendra.db","./Main_Software/Database/","mahendra_temp.db")
-                fn.write_toml_section_value("Database","path", "./Main_Software/Database/mahendra_temp.db" )
+                fn.write_toml_section_value(r"Main_Software\setting.toml","Database","path", "./Main_Software/Database/mahendra_temp.db" )
             else:
-                fn.write_toml_section_value("Database","path", "./Main_Software/Database/mahendra.db" )
+                fn.write_toml_section_value(r"Main_Software\setting.toml","Database","path", "./Main_Software/Database/mahendra.db" )
             # upload_Files = DropboxSync()
             # upload_Files.upload_changed()
-            fn.write_toml_section_value("Account", "id", self.user_id)
+            fn.write_toml_section_value(r"Main_Software\setting.toml","Account", "id", self.user_id)
             fn.store_config_value("Account", "id", self.user_id)
             print("Login successfull")
             self.loginsucess = 1

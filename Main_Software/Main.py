@@ -41,9 +41,9 @@ class LoginDialog(QtWidgets.QDialog):
                 # self.traders.close()
                 # self.show()
 
-# login_dialog = LoginDialog()
-# login_dialog.show()
+login_dialog = LoginDialog()
+login_dialog.show()
 
-traders = ManagementSystem()
+# traders = ManagementSystem()
 
 sys.exit(app.exec())

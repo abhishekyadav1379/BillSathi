@@ -120,7 +120,7 @@ class InvoiceGenerator:
             remaining_amount=remaining_amount
             # ... (other data)
         )
-        hei = hei + len(products)*8.5
+        hei = hei + len(products)*10
         # print(len(products))
         # Configure pdfkit options
         options = {
@@ -137,12 +137,13 @@ class InvoiceGenerator:
         # Generate the PDF
         path_to_wkhtmltopdf = r"Main_Software\wkhtmltopdf\bin\wkhtmltopdf.exe"
         config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
-        pdfkit.from_string(rendered_html, './Main_Software/Invoice.pdf',
+        pdfkit.from_string(rendered_html, './Main_Software/Image_pdf/Invoice.pdf',
                            options=options, configuration=config)
 
     def custom_test_case():
         # Define your test data
         id = "12345"
+        
         name = "John Doe"
         address = "123 Main St"
         phone = "555-1234"

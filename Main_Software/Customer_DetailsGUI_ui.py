@@ -31,37 +31,37 @@ class Ui_Customer_details(object):
         Customer_details.resize(1220, 755)
         Customer_details.setMaximumSize(QtCore.QSize(1600, 800))
         Customer_details.setStyleSheet("QLineEdit {\n"
-                                       "                background-color: #f3f3f3;\n"
-                                       "                border: 2px solid #c0c0c0;\n"
-                                       "                border-radius: 5px;\n"
-                                       "                padding: 5px;\n"
-                                       "                selection-background-color: #a8a8a8;\n"
-                                       "            }\n"
-                                       "\n"
-                                       "            QLineEdit:focus {\n"
-                                       "                border: 2px solid #707070;\n"
-                                       "                background-color: #ffffff;\n"
-                                       "            }\n"
-                                       "\n"
-                                       "\n"
-                                       "QLabel {\n"
-                                       "    font-family: Russo One;\n"
-                                       "    font-size: 22px;\n"
-                                       "    border : 0px;\n"
-                                       "}\n"
-                                       "QDialog{\n"
-                                       "background-color: rgb(50, 62, 67);\n"
-                                       "}\n"
-                                       "")
+"                background-color: #f3f3f3;\n"
+"                border: 2px solid #c0c0c0;\n"
+"                border-radius: 5px;\n"
+"                padding: 5px;\n"
+"                selection-background-color: #a8a8a8;\n"
+"            }\n"
+"\n"
+"            QLineEdit:focus {\n"
+"                border: 2px solid #707070;\n"
+"                background-color: #ffffff;\n"
+"            }\n"
+"\n"
+"\n"
+"QLabel {\n"
+"    font-family: Russo One;\n"
+"    font-size: 22px;\n"
+"    border : 0px;\n"
+"}\n"
+"QDialog{\n"
+"background-color: rgb(50, 62, 67);\n"
+"}\n"
+"")
         self.gridLayout_5 = QtWidgets.QGridLayout(Customer_details)
         self.gridLayout_5.setObjectName("gridLayout_5")
         self.frame_4 = QtWidgets.QFrame(parent=Customer_details)
         self.frame_4.setMaximumSize(QtCore.QSize(16777215, 180))
         self.frame_4.setStyleSheet("#frame_4{\n"
-                                   "border: 2px solid #c0c0c0;\n"
-                                   "border-radius: 10px;\n"
-                                   "background-color: white;\n"
-                                   "}")
+"border: 2px solid #c0c0c0;\n"
+"border-radius: 10px;\n"
+"background-color: white;\n"
+"}")
         self.frame_4.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_4.setObjectName("frame_4")
@@ -88,19 +88,18 @@ class Ui_Customer_details(object):
         font.setPointSize(-1)
         self.id_label.setFont(font)
         self.id_label.setStyleSheet("QLabel{\n"
-                                    " color: blue;\n"
-                                    "}")
+" color: blue;\n"
+"}")
         self.id_label.setObjectName("id_label")
         self.horizontalLayout_3.addWidget(self.id_label)
         self.toolButton_copy = QtWidgets.QToolButton(parent=self.frame)
         self.toolButton_copy.setStyleSheet("QToolButton{\n"
-                                           "border: None;\n"
-                                           "margin-bottom: 10px;\n"
-                                           "margin-right: 15px\n"
-                                           "}")
+"border: None;\n"
+"margin-bottom: 10px;\n"
+"margin-right: 15px\n"
+"}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/copy-96.png"),
-                       QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/copy-96.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton_copy.setIcon(icon)
         self.toolButton_copy.setObjectName("toolButton_copy")
         self.horizontalLayout_3.addWidget(self.toolButton_copy)
@@ -120,13 +119,12 @@ class Ui_Customer_details(object):
         self.phone_label.setObjectName("phone_label")
         self.verticalLayout.addWidget(self.phone_label)
         self.gridLayout_4.addWidget(self.frame, 0, 0, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(
-            40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.gridLayout_4.addItem(spacerItem, 0, 1, 1, 1)
         self.frame_2 = QtWidgets.QFrame(parent=self.frame_4)
         self.frame_2.setStyleSheet("QFrame {\n"
-                                   "padding-left: 0px;\n"
-                                   "}")
+"padding-left: 0px;\n"
+"}")
         self.frame_2.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_2.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_2.setObjectName("frame_2")
@@ -134,9 +132,9 @@ class Ui_Customer_details(object):
         self.gridLayout.setObjectName("gridLayout")
         self.lineEdit_rem_total = QtWidgets.QLineEdit(parent=self.frame_2)
         self.lineEdit_rem_total.setStyleSheet("QLineEdit{\n"
-                                              "    color:red;\n"
-                                              "    font-size: 16px;\n"
-                                              "}")
+"    color:red;\n"
+"    font-size: 16px;\n"
+"}")
         self.lineEdit_rem_total.setReadOnly(True)
         self.lineEdit_rem_total.setObjectName("lineEdit_rem_total")
         self.gridLayout.addWidget(self.lineEdit_rem_total, 1, 2, 1, 1)
@@ -145,8 +143,7 @@ class Ui_Customer_details(object):
         font.setFamily("Russo One")
         font.setPointSize(-1)
         self.remaining_label.setFont(font)
-        self.remaining_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight |
-                                          QtCore.Qt.AlignmentFlag.AlignTrailing | QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.remaining_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.remaining_label.setObjectName("remaining_label")
         self.gridLayout.addWidget(self.remaining_label, 1, 1, 1, 1)
         self.pushButton_submit = QtWidgets.QPushButton(parent=self.frame_2)
@@ -157,24 +154,24 @@ class Ui_Customer_details(object):
         font.setWeight(75)
         self.pushButton_submit.setFont(font)
         self.pushButton_submit.setStyleSheet("QPushButton {\n"
-                                             "    background-color: rgb(29,94,255);\n"
-                                             "    color: white;\n"
-                                             "    border-radius: 6px;\n"
-                                             "    border: none;\n"
-                                             "    padding: 8px 16px;\n"
-                                             "color: white;\n"
-                                             "    font-size: 18px;\n"
-                                             "    font-weight: bold;\n"
-                                             "    font-family: \"Arial\";\n"
-                                             "}\n"
-                                             "\n"
-                                             "QPushButton:hover {\n"
-                                             "    background-color: skyblue;\n"
-                                             "}\n"
-                                             "\n"
-                                             "QPushButton:pressed {\n"
-                                             "    background-color: dodgerblue;\n"
-                                             "}")
+"    background-color: rgb(29,94,255);\n"
+"    color: white;\n"
+"    border-radius: 6px;\n"
+"    border: none;\n"
+"    padding: 8px 16px;\n"
+"color: white;\n"
+"    font-size: 18px;\n"
+"    font-weight: bold;\n"
+"    font-family: \"Arial\";\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: skyblue;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: dodgerblue;\n"
+"}")
         self.pushButton_submit.setObjectName("pushButton_submit")
         self.gridLayout.addWidget(self.pushButton_submit, 3, 2, 1, 1)
         self.lineEdit_comment = QtWidgets.QLineEdit(parent=self.frame_2)
@@ -182,103 +179,92 @@ class Ui_Customer_details(object):
         font.setPointSize(11)
         self.lineEdit_comment.setFont(font)
         self.lineEdit_comment.setStyleSheet("QLineEdit{\n"
-                                            "margin-bottom: 0px;\n"
-                                            "}")
+"margin-bottom: 0px;\n"
+"}")
         self.lineEdit_comment.setText("")
         self.lineEdit_comment.setObjectName("lineEdit_comment")
         self.gridLayout.addWidget(self.lineEdit_comment, 3, 1, 1, 1)
         self.frame_5 = QtWidgets.QFrame(parent=self.frame_2)
         self.frame_5.setStyleSheet("QToolButton{\n"
-                                   "    font-size: 14px;\n"
-                                   "\n"
-                                   "}")
+"    font-size: 14px;\n"
+"\n"
+"}")
         self.frame_5.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_5.setObjectName("frame_5")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_5)
         self.gridLayout_3.setObjectName("gridLayout_3")
         self.toolButton_pdf = QtWidgets.QToolButton(parent=self.frame_5)
-        self.toolButton_pdf.setLayoutDirection(
-            QtCore.Qt.LayoutDirection.LeftToRight)
+        self.toolButton_pdf.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icons/icons8-pdf-100.png"),
-                        QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/icons/icons8-pdf-100.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.toolButton_pdf.setIcon(icon1)
         self.toolButton_pdf.setIconSize(QtCore.QSize(30, 30))
-        self.toolButton_pdf.setToolButtonStyle(
-            QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
+        self.toolButton_pdf.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.toolButton_pdf.setObjectName("toolButton_pdf")
         self.gridLayout_3.addWidget(self.toolButton_pdf, 0, 1, 1, 1)
         self.comboBox = QtWidgets.QComboBox(parent=self.frame_5)
         self.comboBox.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         self.comboBox.setStyleSheet("QComboBox {\n"
-                                    "    border-radius: 3px;\n"
-                                    "    padding: 5px;\n"
-                                    "    font-family: Belanosima;\n"
-                                    "    font-size: 18px;\n"
-                                    "    background-color: rgb(231, 255, 215);\n"
-                                    "}\n"
-                                    "")
-        self.comboBox.setSizeAdjustPolicy(
-            QtWidgets.QComboBox.SizeAdjustPolicy.AdjustToContents)
+"    border-radius: 3px;\n"
+"    padding: 5px;\n"
+"    font-family: Belanosima;\n"
+"    font-size: 18px;\n"
+"    background-color: rgb(231, 255, 215);\n"
+"}\n"
+"")
+        self.comboBox.setSizeAdjustPolicy(QtWidgets.QComboBox.SizeAdjustPolicy.AdjustToContents)
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
-        self.gridLayout_3.addWidget(
-            self.comboBox, 3, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter | QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.toolButton_pdf_ = QtWidgets.QToolButton(parent=self.frame_5)
-        self.toolButton_pdf_.setLayoutDirection(
-            QtCore.Qt.LayoutDirection.LeftToRight)
-        self.toolButton_pdf_.setIcon(icon1)
-        self.toolButton_pdf_.setIconSize(QtCore.QSize(30, 30))
-        self.toolButton_pdf_.setToolButtonStyle(
-            QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
-        self.toolButton_pdf_.setObjectName("toolButton_pdf_")
-        self.gridLayout_3.addWidget(self.toolButton_pdf_, 0, 0, 1, 1)
-        self.toolButton_message = QtWidgets.QToolButton(parent=self.frame_5)
-        self.toolButton_message.setLayoutDirection(
-            QtCore.Qt.LayoutDirection.LeftToRight)
+        self.gridLayout_3.addWidget(self.comboBox, 3, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.toolButton_telegram = QtWidgets.QToolButton(parent=self.frame_5)
+        self.toolButton_telegram.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/icons/icons8-message-80.png"),
-                        QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton_message.setIcon(icon2)
+        icon2.addPixmap(QtGui.QPixmap(":/icons/icons8-telegram-480.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.toolButton_telegram.setIcon(icon2)
+        self.toolButton_telegram.setIconSize(QtCore.QSize(30, 30))
+        self.toolButton_telegram.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
+        self.toolButton_telegram.setObjectName("toolButton_telegram")
+        self.gridLayout_3.addWidget(self.toolButton_telegram, 0, 0, 1, 1)
+        self.toolButton_message = QtWidgets.QToolButton(parent=self.frame_5)
+        self.toolButton_message.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icons/icons8-message-80.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.toolButton_message.setIcon(icon3)
         self.toolButton_message.setIconSize(QtCore.QSize(30, 30))
-        self.toolButton_message.setToolButtonStyle(
-            QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
+        self.toolButton_message.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.toolButton_message.setObjectName("toolButton_message")
         self.gridLayout_3.addWidget(self.toolButton_message, 1, 0, 1, 1)
         self.toolButton_entry = QtWidgets.QToolButton(parent=self.frame_5)
-        self.toolButton_entry.setLayoutDirection(
-            QtCore.Qt.LayoutDirection.LeftToRight)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/icons/new_entry_icon.png"),
-                        QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.toolButton_entry.setIcon(icon3)
+        self.toolButton_entry.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        icon4 = QtGui.QIcon()
+        icon4.addPixmap(QtGui.QPixmap(":/icons/new_entry_icon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.toolButton_entry.setIcon(icon4)
         self.toolButton_entry.setIconSize(QtCore.QSize(30, 30))
-        self.toolButton_entry.setToolButtonStyle(
-            QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
+        self.toolButton_entry.setToolButtonStyle(QtCore.Qt.ToolButtonStyle.ToolButtonTextBesideIcon)
         self.toolButton_entry.setObjectName("toolButton_entry")
         self.gridLayout_3.addWidget(self.toolButton_entry, 1, 1, 1, 1)
         self.dateEdit = QtWidgets.QDateEdit(parent=self.frame_5)
         self.dateEdit.setStyleSheet("QDateEdit {\n"
-                                    "  background-color: rgb(213, 202, 255);\n"
-                                    "  border: 1px solid #dcdcdc;\n"
-                                    "  border-radius: 4px;\n"
-                                    "  selection-background-color: rgb(215, 192, 255);\n"
-                                    "  selection-color: #333333;\n"
-                                    "  font-size: 16px;\n"
-                                    "  color: #333333;\n"
-                                    "}\n"
-                                    "")
+"  background-color: rgb(213, 202, 255);\n"
+"  border: 1px solid #dcdcdc;\n"
+"  border-radius: 4px;\n"
+"  selection-background-color: rgb(215, 192, 255);\n"
+"  selection-color: #333333;\n"
+"  font-size: 16px;\n"
+"  color: #333333;\n"
+"}\n"
+"")
         self.dateEdit.setObjectName("dateEdit")
         self.gridLayout_3.addWidget(self.dateEdit, 3, 0, 1, 1)
         self.gridLayout.addWidget(self.frame_5, 0, 0, 4, 1)
         self.lineEdit_give = QtWidgets.QLineEdit(parent=self.frame_2)
         self.lineEdit_give.setStyleSheet("QLineEdit{\n"
-                                         "    color:red;\n"
-                                         "    font-size: 16px;\n"
-                                         "}")
+"    color:red;\n"
+"    font-size: 16px;\n"
+"}")
         self.lineEdit_give.setObjectName("lineEdit_give")
         self.gridLayout.addWidget(self.lineEdit_give, 2, 2, 1, 1)
         self.give_label = QtWidgets.QLabel(parent=self.frame_2)
@@ -286,11 +272,9 @@ class Ui_Customer_details(object):
         font.setFamily("Russo One")
         font.setPointSize(-1)
         self.give_label.setFont(font)
-        self.give_label.setLayoutDirection(
-            QtCore.Qt.LayoutDirection.LeftToRight)
+        self.give_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         self.give_label.setStyleSheet("")
-        self.give_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight |
-                                     QtCore.Qt.AlignmentFlag.AlignTrailing | QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.give_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.give_label.setObjectName("give_label")
         self.gridLayout.addWidget(self.give_label, 2, 1, 1, 1)
         self.overall_total_label = QtWidgets.QLabel(parent=self.frame_2)
@@ -298,77 +282,74 @@ class Ui_Customer_details(object):
         font.setFamily("Russo One")
         font.setPointSize(-1)
         self.overall_total_label.setFont(font)
-        self.overall_total_label.setLayoutDirection(
-            QtCore.Qt.LayoutDirection.LeftToRight)
+        self.overall_total_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
         self.overall_total_label.setStyleSheet("")
-        self.overall_total_label.setAlignment(
-            QtCore.Qt.AlignmentFlag.AlignRight | QtCore.Qt.AlignmentFlag.AlignTrailing | QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.overall_total_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.overall_total_label.setObjectName("overall_total_label")
         self.gridLayout.addWidget(self.overall_total_label, 0, 1, 1, 1)
         self.lineEdit_overall_total = QtWidgets.QLineEdit(parent=self.frame_2)
         self.lineEdit_overall_total.setStyleSheet("QLineEdit{\n"
-                                                  "    color:red;\n"
-                                                  "    font-size: 16px;\n"
-                                                  "}")
+"    color:red;\n"
+"    font-size: 16px;\n"
+"}")
         self.lineEdit_overall_total.setObjectName("lineEdit_overall_total")
         self.gridLayout.addWidget(self.lineEdit_overall_total, 0, 2, 1, 1)
         self.gridLayout_4.addWidget(self.frame_2, 0, 2, 1, 1)
         self.gridLayout_5.addWidget(self.frame_4, 0, 0, 1, 1)
         self.frame_3 = QtWidgets.QFrame(parent=Customer_details)
         self.frame_3.setStyleSheet("#frame_3{\n"
-                                   "border: 2px solid #c0c0c0;\n"
-                                   "border-radius: 10px;\n"
-                                   "background-color: white;\n"
-                                   "}\n"
-                                   "\n"
-                                   "\n"
-                                   "QTableWidget {\n"
-                                   "    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-                                   "                                      stop:0 #F7F7F7, stop:1 #E8E8E8);\n"
-                                   "    gridline-color: #DDDDDD;\n"
-                                   "    selection-background-color: #E6F1FF;\n"
-                                   "    selection-color: #333333;\n"
-                                   "    border-radius: 1px;\n"
-                                   "}\n"
-                                   "QTableWidget::item {\n"
-                                   "    text-align: center;\n"
-                                   "}\n"
-                                   "QTableWidget QHeaderView::section {\n"
-                                   "    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-                                   "                                      stop:0 #4876AF, stop:1 #286090);\n"
-                                   "    color: white;\n"
-                                   "    font-weight: bold;\n"
-                                   "    padding: 6px;\n"
-                                   "    border: none;\n"
-                                   "    border-bottom: 1px solid #355F8C;\n"
-                                   "    border-radius: 4px;\n"
-                                   "}\n"
-                                   "\n"
-                                   "QTableWidget QHeaderView::section:second {\n"
-                                   "    border-top-right-radius: 14px;\n"
-                                   "}\n"
-                                   "\n"
-                                   "QTableWidget::item:selected {\n"
-                                   "    background-color: #B3D7FF;\n"
-                                   "    color: #333333;\n"
-                                   "}\n"
-                                   "QTableWidget QHeaderView::section:pressed {\n"
-                                   "    background-color: #4F8BC9;\n"
-                                   "}\n"
-                                   "\n"
-                                   "\n"
-                                   "\n"
-                                   "QTableWidget::item:hover {\n"
-                                   "    background-color: #E6F1FF;\n"
-                                   "}")
+"border: 2px solid #c0c0c0;\n"
+"border-radius: 10px;\n"
+"background-color: white;\n"
+"}\n"
+"\n"
+"\n"
+"QTableWidget {\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"                                      stop:0 #F7F7F7, stop:1 #E8E8E8);\n"
+"    gridline-color: #DDDDDD;\n"
+"    selection-background-color: #E6F1FF;\n"
+"    selection-color: #333333;\n"
+"    border-radius: 1px;\n"
+"}\n"
+"QTableWidget::item {\n"
+"    text-align: center;\n"
+"}\n"
+"QTableWidget QHeaderView::section {\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"                                      stop:0 #4876AF, stop:1 #286090);\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"    padding: 6px;\n"
+"    border: none;\n"
+"    border-bottom: 1px solid #355F8C;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QTableWidget QHeaderView::section:second {\n"
+"    border-top-right-radius: 14px;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: #B3D7FF;\n"
+"    color: #333333;\n"
+"}\n"
+"QTableWidget QHeaderView::section:pressed {\n"
+"    background-color: #4F8BC9;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QTableWidget::item:hover {\n"
+"    background-color: #E6F1FF;\n"
+"}")
         self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
         self.frame_3.setObjectName("frame_3")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.frame_3)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.tableWidget_desc = QtWidgets.QTableWidget(parent=self.frame_3)
-        self.tableWidget_desc.setEditTriggers(
-            QtWidgets.QAbstractItemView.EditTrigger.AnyKeyPressed)
+        self.tableWidget_desc.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.AnyKeyPressed)
         self.tableWidget_desc.setObjectName("tableWidget_desc")
         self.tableWidget_desc.setColumnCount(6)
         self.tableWidget_desc.setRowCount(0)
@@ -387,8 +368,7 @@ class Ui_Customer_details(object):
         self.tableWidget_desc.horizontalHeader().setStretchLastSection(True)
         self.gridLayout_2.addWidget(self.tableWidget_desc, 1, 0, 1, 1)
         self.tableWidget_money = QtWidgets.QTableWidget(parent=self.frame_3)
-        self.tableWidget_money.setEditTriggers(
-            QtWidgets.QAbstractItemView.EditTrigger.AnyKeyPressed)
+        self.tableWidget_money.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.AnyKeyPressed)
         self.tableWidget_money.setObjectName("tableWidget_money")
         self.tableWidget_money.setColumnCount(6)
         self.tableWidget_money.setRowCount(0)
@@ -408,12 +388,10 @@ class Ui_Customer_details(object):
         self.gridLayout_2.addWidget(self.tableWidget_money, 1, 1, 1, 1)
         self.label = QtWidgets.QLabel(parent=self.frame_3)
         self.label.setObjectName("label")
-        self.gridLayout_2.addWidget(
-            self.label, 0, 0, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_2.addWidget(self.label, 0, 0, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.label_2 = QtWidgets.QLabel(parent=self.frame_3)
         self.label_2.setObjectName("label_2")
-        self.gridLayout_2.addWidget(
-            self.label_2, 0, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.gridLayout_2.addWidget(self.label_2, 0, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
         self.gridLayout_5.addWidget(self.frame_3, 1, 0, 1, 1)
 
         self.retranslateUi(Customer_details)
@@ -421,33 +399,24 @@ class Ui_Customer_details(object):
 
     def retranslateUi(self, Customer_details):
         _translate = QtCore.QCoreApplication.translate
-        Customer_details.setWindowTitle(_translate(
-            "Customer_details", "Customer Details"))
+        Customer_details.setWindowTitle(_translate("Customer_details", "Customer Details"))
         self.name_label.setText(_translate("Customer_details", "Name"))
         self.id_label.setText(_translate("Customer_details", "ID"))
         self.toolButton_copy.setText(_translate("Customer_details", "..."))
         self.place_label.setText(_translate("Customer_details", "Place"))
         self.phone_label.setText(_translate("Customer_details", "Phone"))
-        self.remaining_label.setText(_translate(
-            "Customer_details", "Remaining Amount"))
-        self.pushButton_submit.setText(
-            _translate("Customer_details", "Submit"))
-        self.lineEdit_comment.setPlaceholderText(
-            _translate("Customer_details", "Comments"))
-        self.toolButton_pdf.setText(
-            _translate("Customer_details", "PDF       "))
+        self.remaining_label.setText(_translate("Customer_details", "Remaining Amount"))
+        self.pushButton_submit.setText(_translate("Customer_details", "Submit"))
+        self.lineEdit_comment.setPlaceholderText(_translate("Customer_details", "Comments"))
+        self.toolButton_pdf.setText(_translate("Customer_details", "PDF       "))
         self.comboBox.setItemText(0, _translate("Customer_details", "Cash"))
         self.comboBox.setItemText(1, _translate("Customer_details", "UPI"))
         self.comboBox.setItemText(2, _translate("Customer_details", "Cheaque"))
-        self.toolButton_pdf_.setText(
-            _translate("Customer_details", "Testing  "))
-        self.toolButton_message.setText(
-            _translate("Customer_details", "Message"))
-        self.toolButton_entry.setText(
-            _translate("Customer_details", "Entry     "))
+        self.toolButton_telegram.setText(_translate("Customer_details", "Telegram"))
+        self.toolButton_message.setText(_translate("Customer_details", "Message"))
+        self.toolButton_entry.setText(_translate("Customer_details", "Entry     "))
         self.give_label.setText(_translate("Customer_details", "Paid"))
-        self.overall_total_label.setText(
-            _translate("Customer_details", "Overall Total"))
+        self.overall_total_label.setText(_translate("Customer_details", "Overall Total"))
         item = self.tableWidget_desc.horizontalHeaderItem(0)
         item.setText(_translate("Customer_details", "Date"))
         item = self.tableWidget_desc.horizontalHeaderItem(1)
@@ -473,9 +442,7 @@ class Ui_Customer_details(object):
         item = self.tableWidget_money.horizontalHeaderItem(5)
         item.setText(_translate("Customer_details", "Comments"))
         self.label.setText(_translate("Customer_details", "Product Details"))
-        self.label_2.setText(_translate(
-            "Customer_details", "Cash Flow Details"))
-
+        self.label_2.setText(_translate("Customer_details", "Cash Flow Details"))
 
 # -------------------------Main Editing-------#
         self.pushButton_submit.clicked.connect(self.submit_btn)
@@ -493,6 +460,8 @@ class Ui_Customer_details(object):
         self.dateEdit.setDate(QtCore.QDate.currentDate())
         self.dateEdit.setCalendarPopup(True)
         self.dateEdit.dateChanged.connect(self.on_date_changed)
+        self.toolButton_telegram.clicked.connect(self.send_file_to_telegram)
+        self.toolButton_message.clicked.connect(self.send_message_to_telegram)
         # Customer_details.showMaximized()
 
         # menu
@@ -897,7 +866,7 @@ class Ui_Customer_details(object):
 
     def open_pdf_in_default_browser(self):
         try:
-            pdf_path = "customer_details.pdf"
+            pdf_path = "./Main_Software/Image_pdf/customer_details.pdf"
             webbrowser.open(pdf_path, new=2)
         except Exception as e:
             print("Error:", e)
@@ -919,3 +888,26 @@ class Ui_Customer_details(object):
                 self.tableWidget_desc.model().index(row, col))
             QToolTip.showText(self.tableWidget_desc.mapToGlobal(
                 rect.bottomRight()), cell_text)
+        
+    def send_file_to_telegram(self):
+        id,name,address,phone = self.id_label.text(),self.name_label.text(),self.place_label.text(),self.phone_label.text()
+        content = f"{id}\n{name}\n{address}\n{phone}"
+        InvoicePdf.generate_customer_details(id)
+        self.fn.send_pdf_with_text_to_telegram(r"./Main_Software/Image_pdf/customer_details.pdf",f"{name}_{id}.pdf",content)
+        
+    def send_message_to_telegram(self):
+        id,name,address,phone = self.id_label.text(),self.name_label.text(),self.place_label.text(),self.phone_label.text()
+        print(id)
+        # content = f"{id}\n{name}\n{address}\n{phone}"
+        amount = self.fn.select_db(f"select sum(Total - Give) from Money where id = '{id}'")[0][0]
+        print(amount)
+        message = f'''प्रिय {name},
+हम आशा करते है कि आप नए निर्माण का लाभ उठा रहे होंगे | 
+आपका  ₹ {amount} राशि बकाया है, कृपया इसका भुगतान करने का कष्ट करे | 
+तो महान दया होगी| 
+
+धन्यवाद
+न्यू महेंद्रा ट्रेडर्स'''
+        self.fn.send_message_to_telegram(message)
+        
+        

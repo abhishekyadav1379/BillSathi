@@ -44,7 +44,6 @@ class SpeechRecognitionThread(QThread):
                 self.recognition_result.emit("Error")
                 print("Error occurred during speech recognition:", str(e))
 
-
 class Ui_Entry_Window(object):
     def setupUi(self, Entry_Window):
         font = "Russo One"
@@ -74,52 +73,207 @@ class Ui_Entry_Window(object):
 "}")
         self.gridLayout_4 = QtWidgets.QGridLayout(Entry_Window)
         self.gridLayout_4.setObjectName("gridLayout_4")
-        self.frame_3 = QtWidgets.QFrame(parent=Entry_Window)
-        self.frame_3.setStyleSheet("QFrame{\n"
-"background-color: #D2E9E9;\n"
+        self.tableWidget = QtWidgets.QTableWidget(parent=Entry_Window)
+        self.tableWidget.setStyleSheet("QTableWidget {\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"                                      stop:0 #F7F7F7, stop:1 #E8E8E8);\n"
+"    gridline-color: #DDDDDD;\n"
+"    selection-background-color: #E6F1FF;\n"
+"    selection-color: #333333;\n"
+"\n"
+"}\n"
+"QTableWidget::item {\n"
+"    text-align: center;\n"
+"}\n"
+"QTableWidget QHeaderView::section {\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
+"                                      stop:0 #4876AF, stop:1 #286090);\n"
+"    color: white;\n"
+"    font-weight: bold;\n"
+"    padding: 6px;\n"
+"    border: none;\n"
+"    border-bottom: 1px solid #355F8C;\n"
+"    border-radius: 4px;\n"
+"}\n"
+"\n"
+"QTableWidget QHeaderView::section:second {\n"
+"    border-top-right-radius: 24px;\n"
+"}\n"
+"\n"
+"QTableWidget::item:selected {\n"
+"    background-color: #B3D7FF;\n"
+"    color: #333333;\n"
+"}\n"
+"QTableWidget QHeaderView::section:pressed {\n"
+"    background-color: #4F8BC9;\n"
+"}\n"
+"\n"
+"\n"
+"\n"
+"QTableWidget::item:hover {\n"
+"    background-color: #E6F1FF;\n"
 "}")
-        self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_3.setObjectName("frame_3")
-        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_3)
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.main_label = QtWidgets.QLabel(parent=self.frame_3)
+        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.AnyKeyPressed|QtWidgets.QAbstractItemView.EditTrigger.CurrentChanged|QtWidgets.QAbstractItemView.EditTrigger.EditKeyPressed)
+        self.tableWidget.setWordWrap(True)
+        self.tableWidget.setObjectName("tableWidget")
+        self.tableWidget.setColumnCount(4)
+        self.tableWidget.setRowCount(15)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(3, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(4, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(5, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(7, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(8, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(9, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(10, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(11, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(12, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(13, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setVerticalHeaderItem(14, item)
+        item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
-        font.setFamily("Russo One")
-        font.setPointSize(26)
-        font.setBold(False)
-        font.setWeight(50)
-        self.main_label.setFont(font)
-        self.main_label.setObjectName("main_label")
-        self.horizontalLayout.addWidget(self.main_label)
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        item.setBackground(QtGui.QColor(255, 255, 255))
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
+        item.setForeground(brush)
+        self.tableWidget.setHorizontalHeaderItem(0, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.tableWidget.setHorizontalHeaderItem(1, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, item)
+        item = QtWidgets.QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, item)
+        self.tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.gridLayout_4.addWidget(self.tableWidget, 2, 0, 1, 2)
+        self.frame_4 = QtWidgets.QFrame(parent=Entry_Window)
+        self.frame_4.setStyleSheet("QFrame {\n"
+"    border: 2px solid #dddddd;\n"
+"}\n"
+"\n"
+"\n"
+"QLabel {\n"
+"    font-family: Russo One;\n"
+"    font-size: 18px;\n"
+"    border : 0px;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"                background-color: #f3f3f3;\n"
+"                border: 2px solid #c0c0c0;\n"
+"                border-radius: 5px;\n"
+"                padding: 5px;\n"
+"                selection-background-color: #a8a8a8;\n"
+"                color:red;\n"
+"                font-size: 14px;\n"
+"            }\n"
+"\n"
+"            QLineEdit:focus {\n"
+"                border: 2px solid #707070;\n"
+"                background-color: #ffffff;\n"
+"            }\n"
+"")
+        self.frame_4.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_4.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_4.setObjectName("frame_4")
+        self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_4)
+        self.gridLayout_3.setObjectName("gridLayout_3")
+        self.comboBox_cash = QtWidgets.QComboBox(parent=self.frame_4)
+        font = QtGui.QFont()
+        font.setFamily("Belanosima")
+        font.setPointSize(-1)
+        self.comboBox_cash.setFont(font)
+        self.comboBox_cash.setStyleSheet("QComboBox {\n"
+"    border-radius: 3px;\n"
+"    padding: 5px;\n"
+"    font-family: Belanosima;\n"
+"    font-size: 18px;\n"
+"    background-color: rgb(231, 255, 215);\n"
+"}\n"
+"")
+        self.comboBox_cash.setObjectName("comboBox_cash")
+        self.comboBox_cash.addItem("")
+        self.comboBox_cash.addItem("")
+        self.comboBox_cash.addItem("")
+        self.comboBox_cash.addItem("")
+        self.gridLayout_3.addWidget(self.comboBox_cash, 1, 0, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.horizontalLayout.addItem(spacerItem)
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.date_label = QtWidgets.QLabel(parent=self.frame_3)
+        self.gridLayout_3.addItem(spacerItem, 0, 3, 2, 1)
+        self.giving_label = QtWidgets.QLabel(parent=self.frame_4)
         font = QtGui.QFont()
         font.setFamily("Russo One")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.date_label.setFont(font)
-        self.date_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.date_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.date_label.setObjectName("date_label")
-        self.verticalLayout.addWidget(self.date_label)
-        self.time_label = QtWidgets.QLabel(parent=self.frame_3)
+        font.setPointSize(-1)
+        self.giving_label.setFont(font)
+        self.giving_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.giving_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.giving_label.setObjectName("giving_label")
+        self.gridLayout_3.addWidget(self.giving_label, 0, 1, 1, 1)
+        self.lineEdit_remaining = QtWidgets.QLineEdit(parent=self.frame_4)
+        self.lineEdit_remaining.setReadOnly(True)
+        self.lineEdit_remaining.setObjectName("lineEdit_remaining")
+        self.gridLayout_3.addWidget(self.lineEdit_remaining, 1, 2, 1, 1)
+        self.total_label = QtWidgets.QLabel(parent=self.frame_4)
         font = QtGui.QFont()
         font.setFamily("Russo One")
-        font.setPointSize(12)
-        font.setBold(False)
-        font.setWeight(50)
-        self.time_label.setFont(font)
-        self.time_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.time_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.time_label.setObjectName("time_label")
-        self.verticalLayout.addWidget(self.time_label)
-        self.horizontalLayout.addLayout(self.verticalLayout)
-        self.gridLayout_4.addWidget(self.frame_3, 0, 0, 1, 2)
+        font.setPointSize(-1)
+        self.total_label.setFont(font)
+        self.total_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.total_label.setObjectName("total_label")
+        self.gridLayout_3.addWidget(self.total_label, 0, 4, 2, 1)
+        self.lineEdit_total = QtWidgets.QLineEdit(parent=self.frame_4)
+        self.lineEdit_total.setReadOnly(True)
+        self.lineEdit_total.setObjectName("lineEdit_total")
+        self.gridLayout_3.addWidget(self.lineEdit_total, 0, 5, 2, 1)
+        self.method_label = QtWidgets.QLabel(parent=self.frame_4)
+        font = QtGui.QFont()
+        font.setFamily("Russo One")
+        font.setPointSize(-1)
+        self.method_label.setFont(font)
+        self.method_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.method_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.method_label.setObjectName("method_label")
+        self.gridLayout_3.addWidget(self.method_label, 0, 0, 1, 1)
+        self.remaining_label = QtWidgets.QLabel(parent=self.frame_4)
+        font = QtGui.QFont()
+        font.setFamily("Russo One")
+        font.setPointSize(-1)
+        self.remaining_label.setFont(font)
+        self.remaining_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.remaining_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.remaining_label.setObjectName("remaining_label")
+        self.gridLayout_3.addWidget(self.remaining_label, 1, 1, 1, 1)
+        self.lineEdit_giving = QtWidgets.QLineEdit(parent=self.frame_4)
+        self.lineEdit_giving.setDragEnabled(False)
+        self.lineEdit_giving.setReadOnly(True)
+        self.lineEdit_giving.setObjectName("lineEdit_giving")
+        self.gridLayout_3.addWidget(self.lineEdit_giving, 0, 2, 1, 1)
+        self.gridLayout_4.addWidget(self.frame_4, 3, 0, 1, 2)
         self.frame_2 = QtWidgets.QFrame(parent=Entry_Window)
         self.frame_2.setMaximumSize(QtCore.QSize(400, 16777215))
         self.frame_2.setStyleSheet("QToolButton {\n"
@@ -231,6 +385,52 @@ class Ui_Entry_Window(object):
         self.lineEdit_id.setObjectName("lineEdit_id")
         self.gridLayout.addWidget(self.lineEdit_id, 2, 3, 1, 1)
         self.gridLayout_4.addWidget(self.frame_2, 1, 0, 1, 1)
+        self.frame_3 = QtWidgets.QFrame(parent=Entry_Window)
+        self.frame_3.setStyleSheet("QFrame{\n"
+"background-color: #D2E9E9;\n"
+"}")
+        self.frame_3.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
+        self.frame_3.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
+        self.frame_3.setObjectName("frame_3")
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.frame_3)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.main_label = QtWidgets.QLabel(parent=self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Russo One")
+        font.setPointSize(26)
+        font.setBold(False)
+        font.setWeight(50)
+        self.main_label.setFont(font)
+        self.main_label.setObjectName("main_label")
+        self.horizontalLayout.addWidget(self.main_label)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.date_label = QtWidgets.QLabel(parent=self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Russo One")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.date_label.setFont(font)
+        self.date_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.date_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.date_label.setObjectName("date_label")
+        self.verticalLayout.addWidget(self.date_label)
+        self.time_label = QtWidgets.QLabel(parent=self.frame_3)
+        font = QtGui.QFont()
+        font.setFamily("Russo One")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setWeight(50)
+        self.time_label.setFont(font)
+        self.time_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
+        self.time_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.time_label.setObjectName("time_label")
+        self.verticalLayout.addWidget(self.time_label)
+        self.horizontalLayout.addLayout(self.verticalLayout)
+        self.gridLayout_4.addWidget(self.frame_3, 0, 0, 1, 2)
         self.frame = QtWidgets.QFrame(parent=Entry_Window)
         self.frame.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
@@ -250,6 +450,22 @@ class Ui_Entry_Window(object):
 "")
         self.dateEdit.setObjectName("dateEdit")
         self.gridLayout_2.addWidget(self.dateEdit, 0, 0, 1, 1)
+        self.checkBox_return = QtWidgets.QCheckBox(parent=self.frame)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.checkBox_return.setFont(font)
+        self.checkBox_return.setObjectName("checkBox_return")
+        self.gridLayout_2.addWidget(self.checkBox_return, 0, 3, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
+        self.lineEdit_comment = QtWidgets.QLineEdit(parent=self.frame)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        self.lineEdit_comment.setFont(font)
+        self.lineEdit_comment.setStyleSheet("QLineEdit{\n"
+"margin-bottom: 3px;\n"
+"}")
+        self.lineEdit_comment.setText("")
+        self.lineEdit_comment.setObjectName("lineEdit_comment")
+        self.gridLayout_2.addWidget(self.lineEdit_comment, 3, 0, 1, 4)
         self.note_label = QtWidgets.QLabel(parent=self.frame)
         font = QtGui.QFont()
         font.setFamily("Russo One")
@@ -260,225 +476,16 @@ class Ui_Entry_Window(object):
 "}")
         self.note_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.note_label.setObjectName("note_label")
-        self.gridLayout_2.addWidget(self.note_label, 2, 0, 1, 2)
-        self.checkBox_return = QtWidgets.QCheckBox(parent=self.frame)
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.checkBox_return.setFont(font)
-        self.checkBox_return.setObjectName("checkBox_return")
-        self.gridLayout_2.addWidget(self.checkBox_return, 0, 1, 1, 1, QtCore.Qt.AlignmentFlag.AlignRight)
-        self.lineEdit_comment = QtWidgets.QLineEdit(parent=self.frame)
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        self.lineEdit_comment.setFont(font)
-        self.lineEdit_comment.setStyleSheet("QLineEdit{\n"
-"margin-bottom: 3px;\n"
-"}")
-        self.lineEdit_comment.setText("")
-        self.lineEdit_comment.setObjectName("lineEdit_comment")
-        self.gridLayout_2.addWidget(self.lineEdit_comment, 3, 0, 1, 2)
+        self.gridLayout_2.addWidget(self.note_label, 2, 0, 1, 4)
+        self.pushButton_telegram = QtWidgets.QPushButton(parent=self.frame)
+        self.pushButton_telegram.setMaximumSize(QtCore.QSize(25, 25))
+        self.pushButton_telegram.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/icons8-telegram-480.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_telegram.setIcon(icon1)
+        self.pushButton_telegram.setObjectName("pushButton_telegram")
+        self.gridLayout_2.addWidget(self.pushButton_telegram, 0, 2, 1, 1)
         self.gridLayout_4.addWidget(self.frame, 1, 1, 1, 1)
-        self.frame_4 = QtWidgets.QFrame(parent=Entry_Window)
-        self.frame_4.setStyleSheet("QFrame {\n"
-"    border: 2px solid #dddddd;\n"
-"}\n"
-"\n"
-"\n"
-"QLabel {\n"
-"    font-family: Russo One;\n"
-"    font-size: 18px;\n"
-"    border : 0px;\n"
-"}\n"
-"\n"
-"QLineEdit {\n"
-"                background-color: #f3f3f3;\n"
-"                border: 2px solid #c0c0c0;\n"
-"                border-radius: 5px;\n"
-"                padding: 5px;\n"
-"                selection-background-color: #a8a8a8;\n"
-"                color:red;\n"
-"                font-size: 14px;\n"
-"            }\n"
-"\n"
-"            QLineEdit:focus {\n"
-"                border: 2px solid #707070;\n"
-"                background-color: #ffffff;\n"
-"            }\n"
-"")
-        self.frame_4.setFrameShape(QtWidgets.QFrame.Shape.StyledPanel)
-        self.frame_4.setFrameShadow(QtWidgets.QFrame.Shadow.Raised)
-        self.frame_4.setObjectName("frame_4")
-        self.gridLayout_3 = QtWidgets.QGridLayout(self.frame_4)
-        self.gridLayout_3.setObjectName("gridLayout_3")
-        self.comboBox_cash = QtWidgets.QComboBox(parent=self.frame_4)
-        font = QtGui.QFont()
-        font.setFamily("Belanosima")
-        font.setPointSize(-1)
-        self.comboBox_cash.setFont(font)
-        self.comboBox_cash.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"    padding: 5px;\n"
-"    font-family: Belanosima;\n"
-"    font-size: 18px;\n"
-"    background-color: rgb(231, 255, 215);\n"
-"}\n"
-"")
-        self.comboBox_cash.setObjectName("comboBox_cash")
-        self.comboBox_cash.addItem("")
-        self.comboBox_cash.addItem("")
-        self.comboBox_cash.addItem("")
-        self.comboBox_cash.addItem("")
-        self.gridLayout_3.addWidget(self.comboBox_cash, 1, 0, 1, 1)
-        spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
-        self.gridLayout_3.addItem(spacerItem1, 0, 3, 2, 1)
-        self.giving_label = QtWidgets.QLabel(parent=self.frame_4)
-        font = QtGui.QFont()
-        font.setFamily("Russo One")
-        font.setPointSize(-1)
-        self.giving_label.setFont(font)
-        self.giving_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.giving_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.giving_label.setObjectName("giving_label")
-        self.gridLayout_3.addWidget(self.giving_label, 0, 1, 1, 1)
-        self.lineEdit_remaining = QtWidgets.QLineEdit(parent=self.frame_4)
-        self.lineEdit_remaining.setReadOnly(True)
-        self.lineEdit_remaining.setObjectName("lineEdit_remaining")
-        self.gridLayout_3.addWidget(self.lineEdit_remaining, 1, 2, 1, 1)
-        self.total_label = QtWidgets.QLabel(parent=self.frame_4)
-        font = QtGui.QFont()
-        font.setFamily("Russo One")
-        font.setPointSize(-1)
-        self.total_label.setFont(font)
-        self.total_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.total_label.setObjectName("total_label")
-        self.gridLayout_3.addWidget(self.total_label, 0, 4, 2, 1)
-        self.lineEdit_total = QtWidgets.QLineEdit(parent=self.frame_4)
-        self.lineEdit_total.setReadOnly(True)
-        self.lineEdit_total.setObjectName("lineEdit_total")
-        self.gridLayout_3.addWidget(self.lineEdit_total, 0, 5, 2, 1)
-        self.method_label = QtWidgets.QLabel(parent=self.frame_4)
-        font = QtGui.QFont()
-        font.setFamily("Russo One")
-        font.setPointSize(-1)
-        self.method_label.setFont(font)
-        self.method_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.method_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.method_label.setObjectName("method_label")
-        self.gridLayout_3.addWidget(self.method_label, 0, 0, 1, 1)
-        self.remaining_label = QtWidgets.QLabel(parent=self.frame_4)
-        font = QtGui.QFont()
-        font.setFamily("Russo One")
-        font.setPointSize(-1)
-        self.remaining_label.setFont(font)
-        self.remaining_label.setLayoutDirection(QtCore.Qt.LayoutDirection.LeftToRight)
-        self.remaining_label.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing|QtCore.Qt.AlignmentFlag.AlignVCenter)
-        self.remaining_label.setObjectName("remaining_label")
-        self.gridLayout_3.addWidget(self.remaining_label, 1, 1, 1, 1)
-        self.lineEdit_giving = QtWidgets.QLineEdit(parent=self.frame_4)
-        self.lineEdit_giving.setDragEnabled(False)
-        self.lineEdit_giving.setReadOnly(True)
-        self.lineEdit_giving.setObjectName("lineEdit_giving")
-        self.gridLayout_3.addWidget(self.lineEdit_giving, 0, 2, 1, 1)
-        self.gridLayout_4.addWidget(self.frame_4, 3, 0, 1, 2)
-        self.tableWidget = QtWidgets.QTableWidget(parent=Entry_Window)
-        self.tableWidget.setStyleSheet("QTableWidget {\n"
-"    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-"                                      stop:0 #F7F7F7, stop:1 #E8E8E8);\n"
-"    gridline-color: #DDDDDD;\n"
-"    selection-background-color: #E6F1FF;\n"
-"    selection-color: #333333;\n"
-"\n"
-"}\n"
-"QTableWidget::item {\n"
-"    text-align: center;\n"
-"}\n"
-"QTableWidget QHeaderView::section {\n"
-"    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,\n"
-"                                      stop:0 #4876AF, stop:1 #286090);\n"
-"    color: white;\n"
-"    font-weight: bold;\n"
-"    padding: 6px;\n"
-"    border: none;\n"
-"    border-bottom: 1px solid #355F8C;\n"
-"    border-radius: 4px;\n"
-"}\n"
-"\n"
-"QTableWidget QHeaderView::section:second {\n"
-"    border-top-right-radius: 24px;\n"
-"}\n"
-"\n"
-"QTableWidget::item:selected {\n"
-"    background-color: #B3D7FF;\n"
-"    color: #333333;\n"
-"}\n"
-"QTableWidget QHeaderView::section:pressed {\n"
-"    background-color: #4F8BC9;\n"
-"}\n"
-"\n"
-"\n"
-"\n"
-"QTableWidget::item:hover {\n"
-"    background-color: #E6F1FF;\n"
-"}")
-        self.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.EditTrigger.AnyKeyPressed|QtWidgets.QAbstractItemView.EditTrigger.CurrentChanged|QtWidgets.QAbstractItemView.EditTrigger.EditKeyPressed)
-        self.tableWidget.setWordWrap(True)
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.setRowCount(15)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(3, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(4, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(5, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(6, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(7, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(8, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(9, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(10, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(11, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(12, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(13, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setVerticalHeaderItem(14, item)
-        item = QtWidgets.QTableWidgetItem()
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
-        item.setFont(font)
-        item.setBackground(QtGui.QColor(255, 255, 255))
-        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
-        brush.setStyle(QtCore.Qt.BrushStyle.SolidPattern)
-        item.setForeground(brush)
-        self.tableWidget.setHorizontalHeaderItem(0, item)
-        item = QtWidgets.QTableWidgetItem()
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        font.setBold(True)
-        font.setWeight(75)
-        item.setFont(font)
-        self.tableWidget.setHorizontalHeaderItem(1, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, item)
-        item = QtWidgets.QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(3, item)
-        self.tableWidget.horizontalHeader().setStretchLastSection(True)
-        self.gridLayout_4.addWidget(self.tableWidget, 2, 0, 1, 2)
         self.frame_5 = QtWidgets.QFrame(parent=Entry_Window)
         self.frame_5.setStyleSheet("QPushButton {\n"
 "    background-color: rgb(29,94,255);\n"
@@ -513,9 +520,9 @@ class Ui_Entry_Window(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_submit.setFont(font)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icons/icons8-submit-60.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_submit.setIcon(icon1)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/icons/icons8-submit-60.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_submit.setIcon(icon2)
         self.pushButton_submit.setObjectName("pushButton_submit")
         self.horizontalLayout_6.addWidget(self.pushButton_submit)
         self.pushButton_print = QtWidgets.QPushButton(parent=self.frame_5)
@@ -525,9 +532,9 @@ class Ui_Entry_Window(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton_print.setFont(font)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/icons/icons8-print-64.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
-        self.pushButton_print.setIcon(icon2)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icons/icons8-print-64.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.pushButton_print.setIcon(icon3)
         self.pushButton_print.setObjectName("pushButton_print")
         self.horizontalLayout_6.addWidget(self.pushButton_print)
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
@@ -550,24 +557,6 @@ class Ui_Entry_Window(object):
     def retranslateUi(self, Entry_Window):
         _translate = QtCore.QCoreApplication.translate
         Entry_Window.setWindowTitle(_translate("Entry_Window", "Entry"))
-        self.main_label.setText(_translate("Entry_Window", "Mahendra Traders"))
-        self.date_label.setText(_translate("Entry_Window", "10-09-2023"))
-        self.time_label.setText(_translate("Entry_Window", "10:45"))
-        self.lineEdit_name.setPlaceholderText(_translate("Entry_Window", "Name"))
-        self.lineEdit_phone.setPlaceholderText(_translate("Entry_Window", "Phone No."))
-        self.lineEdit_address.setPlaceholderText(_translate("Entry_Window", "Address"))
-        self.lineEdit_id.setPlaceholderText(_translate("Entry_Window", "ID"))
-        self.note_label.setText(_translate("Entry_Window", "Note"))
-        self.checkBox_return.setText(_translate("Entry_Window", "Return"))
-        self.lineEdit_comment.setPlaceholderText(_translate("Entry_Window", "Comments"))
-        self.comboBox_cash.setItemText(0, _translate("Entry_Window", "Cash"))
-        self.comboBox_cash.setItemText(1, _translate("Entry_Window", "Udhar/Jma"))
-        self.comboBox_cash.setItemText(2, _translate("Entry_Window", "UPI"))
-        self.comboBox_cash.setItemText(3, _translate("Entry_Window", "Cheque"))
-        self.giving_label.setText(_translate("Entry_Window", "Paid:"))
-        self.total_label.setText(_translate("Entry_Window", "Total"))
-        self.method_label.setText(_translate("Entry_Window", "Method"))
-        self.remaining_label.setText(_translate("Entry_Window", "Remaining:"))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("Entry_Window", "1"))
         item = self.tableWidget.verticalHeaderItem(1)
@@ -606,9 +595,26 @@ class Ui_Entry_Window(object):
         item.setText(_translate("Entry_Window", "Rate"))
         item = self.tableWidget.horizontalHeaderItem(3)
         item.setText(_translate("Entry_Window", "Value"))
+        self.comboBox_cash.setItemText(0, _translate("Entry_Window", "Cash"))
+        self.comboBox_cash.setItemText(1, _translate("Entry_Window", "Udhar/Jma"))
+        self.comboBox_cash.setItemText(2, _translate("Entry_Window", "UPI"))
+        self.comboBox_cash.setItemText(3, _translate("Entry_Window", "Cheque"))
+        self.giving_label.setText(_translate("Entry_Window", "Pay:"))
+        self.total_label.setText(_translate("Entry_Window", "Total"))
+        self.method_label.setText(_translate("Entry_Window", "Method"))
+        self.remaining_label.setText(_translate("Entry_Window", "Remaining:"))
+        self.lineEdit_name.setPlaceholderText(_translate("Entry_Window", "Name"))
+        self.lineEdit_phone.setPlaceholderText(_translate("Entry_Window", "Phone No."))
+        self.lineEdit_address.setPlaceholderText(_translate("Entry_Window", "Address"))
+        self.lineEdit_id.setPlaceholderText(_translate("Entry_Window", "ID"))
+        self.main_label.setText(_translate("Entry_Window", "Mahendra Traders"))
+        self.date_label.setText(_translate("Entry_Window", "10-09-2023"))
+        self.time_label.setText(_translate("Entry_Window", "10:45"))
+        self.checkBox_return.setText(_translate("Entry_Window", "Return"))
+        self.lineEdit_comment.setPlaceholderText(_translate("Entry_Window", "Comments"))
+        self.note_label.setText(_translate("Entry_Window", "Note"))
         self.pushButton_submit.setText(_translate("Entry_Window", "Submit"))
         self.pushButton_print.setText(_translate("Entry_Window", "Print"))
-
 # -----------------------------Main editing-------------------------#
 
 
@@ -661,3 +667,11 @@ class Ui_Entry_Window(object):
         self.recognition_thread = None
     
     
+# if __name__ == "__main__":
+#     import sys
+#     app = QtWidgets.QApplication(sys.argv)
+#     Entry_Window = QtWidgets.QDialog()
+#     ui = Ui_Entry_Window()
+#     ui.setupUi(Entry_Window)
+#     Entry_Window.show()
+#     sys.exit(app.exec())
