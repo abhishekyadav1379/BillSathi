@@ -311,8 +311,6 @@ class all_function():
     def send_pdf_with_text_to_telegram(self, pdf_path,file_name, caption):
         api_token = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "api_token")
         chat_id = self.read_toml_section_value(r"Main_Software\settings\settings.toml", "Telegram", "chat_id")
-        # api_token = '6536259159:AAGaU6QTIoiiSdpEawLb0MAvktwgdziXoUY'
-        # chat_id = '1010585302'
         api_url = f'https://api.telegram.org/bot{api_token}/sendDocument'
 
         try:
