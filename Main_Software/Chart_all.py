@@ -289,23 +289,31 @@ class TestChartWidget(QWidget):
         fn = all_function()
         fn.profit_loss()
         today_date = datetime.now().strftime("%Y-%m-%d")
-        self.profit = fn.select_db(
-            f"select profit from profit_table where date = '{today_date}'")[0]
+        # self.profit = fn.select_db(
+        #     f"select profit from profit_table where date = '{today_date}'")[0]
 
         self.total_sale = list(self.total_sale)
         self.tot_rec = list(self.tot_rec)
         self.tot_udhari = list(self.tot_udhari)
         # print(self.profit)
-        if self.profit[0] == None:
-            self.profit[0] = 0
+        # if self.profit[0] == None:
+        #     self.profit[0] = 0
         if self.total_sale[0] == None:
             self.total_sale[0] = 0
         if self.tot_rec[0] == None:
             self.tot_rec[0] = 0
         if self.tot_udhari[0] == None:
             self.tot_udhari[0] = 0
-        self.chart.setTitle(
-            f"Today - [Sale: ₹ {int(self.total_sale[0])}, Received: ₹ {int(self.tot_rec[0])}, Udhari: ₹ {int(self.tot_udhari[0])} ] - {int(self.profit[0])}")
+        result = f'''[ <span style='color: red;'>Total:    </span>
+            ₹ {int(self.total_sale[0])} 
+            <span style='color: red;'>Received:    </span>
+            ₹ {int(self.tot_rec[0])} 
+            <span style='color: red;'>Udhari:    </span>
+            ₹ {int(self.tot_udhari[0])} ]
+            '''
+        # self.chart.setTitle(
+        #     f"Today - [Sale: ₹ {int(self.total_sale[0])}, Received: ₹ {int(self.tot_rec[0])}, Udhari: ₹ {int(self.tot_udhari[0])} ] - {int(self.profit[0])}")
+        self.chart.setTitle(result)
         # Get the current title font and modify its size
         title_font = self.chart.titleFont()
         # Change the font size to your desired value

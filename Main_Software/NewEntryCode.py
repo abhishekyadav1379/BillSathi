@@ -16,6 +16,7 @@ from ReturnCombo import Ui_ReturnGUI
 import webbrowser
 import Invoice_generator
 from printer import PrinterManager
+from toaster import QToaster
                 
 class FloatOrAValidator(QtGui.QValidator):
     def validate(self, input_str, pos):
@@ -58,6 +59,7 @@ class CompleterDelegate(QStyledItemDelegate):
 class NewEntry(QtWidgets.QDialog):
     def __init__(self):
         super().__init__()
+        
         self.ui = Ui_Entry_Window()
         self.ui.setupUi(self)
         self.ui.retranslateUi(self)
@@ -630,7 +632,7 @@ class NewEntry(QtWidgets.QDialog):
         except Exception as e:
             DialogBox.show_warning_dialog(f"Failed to insert InsertAgain \n{e}")
     
-    def Edit_Record(self,id,name,addr,phone,table,date,time,method,give):
+    def Edit_Record(self,id,name,addr,phone,table,date,time,method,give,comment):
         self.default_cust_id = id   #! order matter here
         self.ui.lineEdit_id.setReadOnly(True)
         self.edit_entry_check = 1
@@ -642,6 +644,7 @@ class NewEntry(QtWidgets.QDialog):
         self.ui.time_label.setText(time)
         self.last_date = self.ui.date_label.text()
         
+        self.ui.lineEdit_comment.setText(comment)
         self.ui.comboBox_cash.setCurrentText(method)
         self.ui.lineEdit_giving.setText(str(give))
         self.ui.lineEdit_name.setText(name)
@@ -758,6 +761,8 @@ class NewEntry(QtWidgets.QDialog):
         name,addr,phone,id = self.cust_Details()
         fn = all_function()
         fn.send_pdf_with_text_to_telegram(r"Main_Software\Image_pdf\invoice.pdf",f"{name}_{id}_estimate.pdf",f"{id}\n{name}\n{addr}\n{phone}")
+        QToaster.showMessage("File send to Telegram.", parent = None,timeout=2000,corner=QtCore.Qt.Corner.TopLeftCorner)
+        
         # fn.send_image_with_caption_to_telegram(r"Main_Software\Image_pdf\invoice.png",f"{id}\n{name}\n{addr}\n{phone}")
         # print("send_image_to_telegram")
                 
@@ -775,4 +780,5 @@ class NewEntry(QtWidgets.QDialog):
                 return
         # self.submit_btn_pressed = 1
         self.Insert_all_Record()
+        # QToaster.showMessage("Record is Submitted.", parent = None,timeout=2000,corner=QtCore.Qt.Corner.TopLeftCorner)
         self.last_date = self.ui.date_label.text()

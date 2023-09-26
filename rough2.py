@@ -1,20 +1,38 @@
-import os
+import sys
+from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget, QCheckBox, QLabel, QVBoxLayout
 
-def get_folder_size(folder_path):
-    total_size = 0
+class MyWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
 
-    for dirpath, dirnames, filenames in os.walk(folder_path):
-        for filename in filenames:
-            file_path = os.path.join(dirpath, filename)
-            total_size += os.path.getsize(file_path)
+        self.setWindowTitle("Checkbox Example")
+        self.setGeometry(100, 100, 400, 200)
 
-    return total_size
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
 
+        layout = QVBoxLayout()
+        central_widget.setLayout(layout)
 
-# Example usage
-file_path = "./Main_Software"
-size = get_folder_size(file_path)
-if size is not None:
-    print(f"File size: {size} bytes")
-else:
-    print("File not found or error occurred.")
+        self.checkbox = QCheckBox("Check me")
+        self.label = QLabel("Unchecked")
+
+        layout.addWidget(self.checkbox)
+        layout.addWidget(self.label)
+
+        self.checkbox.clicked.connect(self.update_label)
+
+    def update_label(self):
+        if self.checkbox.isChecked():
+            self.label.setText("Checked")
+        else:
+            self.label.setText("Unchecked")
+
+def main():
+    app = QApplication(sys.argv)
+    window = MyWindow()
+    window.show()
+    sys.exit(app.exec())
+
+if __name__ == "__main__":
+    main()

@@ -11,10 +11,12 @@ from All_function import all_function
 class DropboxSync:
     def __init__(self):
         fn = all_function()
-        self.account = fn.read_config_value("Account","id")
+        # self.account = fn.read_config_value("Account","id")
+        self.account = fn.read_toml_section_value(r'Main_Software\setting.toml',"Account","id")
         # self.account = user_id
         local_path = "./Main_Software/DropboxStorage/local_files"
-        self.TOKEN =  self.read_config_value("Cred", "access_token")
+        # self.TOKEN =  self.read_config_value("Cred", "access_token") 
+        self.TOKEN = fn.read_toml_section_value(r'Main_Software\setting.toml',"Dropbox","access_token")
         self.dbx = dropbox.Dropbox(self.TOKEN)
         self.local_path = local_path
     

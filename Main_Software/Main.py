@@ -28,6 +28,7 @@ class LoginDialog(QtWidgets.QDialog):
             custom_font_family = "Russo One"
         # fontins = FontInstaller()
         # fontins.install_font_from_file("./Main_Software/Fonts/RussoOne-Regular.ttf")
+    
     def loginbtnClick(self):
         if self.ui.loginsucess == 1:
             self.close()

@@ -1,4 +1,5 @@
 import sqlite3
+import MySQLdb
 # import pretty_errors
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem, QMenu
 from PyQt6.QtCore import Qt
@@ -13,8 +14,9 @@ import sys
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QMessageBox
 from PyQt6.QtCore import QTimer
 import fitz
-import requests
 import toml
+import urllib.request
+import time,requests
 
 class all_function():
     def __init__(self):
@@ -30,6 +32,48 @@ class all_function():
         
         # if path_temp == 1:
             
+    def select_mysql_db(self,query):
+        try:
+            connection = MySQLdb.connect(
+                self.read_toml_section_value(r"Main_Software\settings\settings.toml","planet_scale_db","DATABASE_HOST"),
+                self.read_toml_section_value(r"Main_Software\settings\settings.toml","planet_scale_db","DATABASE_USERNAME"),
+                self.read_toml_section_value(r"Main_Software\settings\settings.toml","planet_scale_db","DATABASE_PASSWORD"),
+                self.read_toml_section_value(r"Main_Software\settings\settings.toml","planet_scale_db","DATABASE"),
+                ssl = r"cacert-2023-08-22.pem"
+            )
+            cur = connection.cursor()
+            # Customer product purchase details
+            query1 = query
+            cur.execute(query1)
+            result = cur.fetchall()
+            cur.close()
+            # print(result)
+            return result
+        except MySQLdb.Error as e:
+            print("Error: " + str(e))
+            return "Error"
+        
+    def insert_mysql_db(self, query, values):
+        try:
+            # Establish a database connection
+            connection = MySQLdb.connect(
+                host=self.read_toml_section_value(r"settings.toml", "planet_scale_db", "DATABASE_HOST"),
+                user=self.read_toml_section_value(r"settings.toml", "planet_scale_db", "DATABASE_USERNAME"),
+                password=self.read_toml_section_value(r"settings.toml", "planet_scale_db", "DATABASE_PASSWORD"),
+                db=self.read_toml_section_value(r"settings.toml", "planet_scale_db", "DATABASE"),
+                ssl={"cacert": "cacert-2023-08-22.pem"}  # Use a dictionary for SSL options
+            )
+            # Create a cursor to interact with the database
+            mycursor = connection.cursor()
+            mycursor.execute(query, values)
+            connection.commit()
+            mycursor.close()
+            connection.close()
+
+            return "Success"
+        except MySQLdb.Error as e:
+            print(f"Insert_mysql_db error: {e}")
+            return "Error"
     def select_db(self,query):
         try:
             mydb = sqlite3.connect(self.database_path)
@@ -173,6 +217,18 @@ class all_function():
         formatted_date = f"{day}-{month}-{year}"
         return formatted_date
 
+    def get_file_size(self, url):
+        try:
+            response = urllib.request.urlopen(url)
+            if 'content-length' in response.headers:
+                size_in_bytes = int(response.headers['content-length'])
+                size_in_kb = size_in_bytes / 1024  # Convert bytes to kilobytes
+                size_in_mb = size_in_kb / 1024  # Convert kilobytes to megabytes
+                return f"{size_in_mb:.2f}"
+            else:
+                return f"Unable to determine file size from the response headers."
+        except Exception as e:
+            return f"An error occurred: {str(e)}"
 
     # *date must be in yyyy-mm-dd format 
     def add_days_to_date(self,days):

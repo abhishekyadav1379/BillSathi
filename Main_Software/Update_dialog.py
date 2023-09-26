@@ -1,178 +1,85 @@
+import shutil
+import zipfile
+import os,sys
 from PyQt6 import QtCore, QtGui, QtWidgets
-from UploadToDropbox import DropboxSync
-import sys,time
+from PyQt6.QtCore import Qt, QThread, pyqtSignal
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QProgressBar
+import pretty_errors
+from PyQt6 import QtCore, QtGui, QtWidgets, QtMultimedia
+from All_function import all_function
+import icons_rc
 
-class DownloadThread(QtCore.QThread):
-    finished = QtCore.pyqtSignal()
+class Loading(QThread):
+    send_signal = pyqtSignal(list)
     
-    def run(self):
-        self.stop_flag = False
-        dropbox = DropboxSync()
-        dropbox.delete_local_folder("./Main_Software/Download_files")
-        dropbox.download_changed("./Main_Software/Download_files",'/Download')
-        self.finished.emit()
-        
-    def stop(self):
-        self.stop_flag = True
-        self.terminate()
-
-class ThreadClass(QtCore.QThread):
-    any_signal = QtCore.pyqtSignal(int)
-    def __init__(self,parent=None,index = 0):
-        super(ThreadClass,self).__init__(parent)
-        self.index = index
-        self.is_running = True
     
+    def __init__(self):
+        super().__init__()
+        self.fn = all_function()
+        
     def run(self):
-        print('Thread started',self.index)
-        cnt = 0
-        cloud = DropboxSync()
-        cloud.token_checker()
-        dropbox_folder_size = int(cloud.get_folder_size("/Download/update_folder"))
-        local_folder_size = 0
-        download_flag = 0
-        while int(local_folder_size) < dropbox_folder_size:
-            if download_flag == 0:
-                download_flag = 1
-                # cloud.download_changed("./Main_Software/Download_files",'/Download')
-            local_folder_size = cloud.get_local_folder_size("./Main_Software/Download_files")
-            progress = int((local_folder_size / dropbox_folder_size) * 100)
-            # print(progress)
-            time.sleep(1)
-            self.any_signal.emit(progress)
-            
-        # while (True):
-        #     cnt+=1
-        #     if cnt == 99:
-        #         pass
-        #         # cnt  =0
-        #     time.sleep(0.01)
-        #     self.any_signal.emit(cnt)
+        self.url = self.fn.select_mysql_db("select value from settings where type = 'download_url'")[0][0]
+        version = self.fn.select_mysql_db("select value from settings where type = 'version'")[0][0]
+        file_size = self.fn.get_file_size(self.url)
+        self.send_signal.emit([version, file_size])
 
-    def stop(self):
-        self.is_running = False
-        print('Thread stopped',self.index)
-        self.terminate()
-        
-        
-class Ui_Update_window(object):
-    def setupUi(self, Update_window):
-        Update_window.setObjectName("Update_window")
-        Update_window.resize(339, 123)
-        Update_window.setStyleSheet("QPushButton {\n"
-"    background-color: rgb(29,94,255);\n"
-"    color: white;\n"
-"    border-radius: 6px;\n"
-"    border: none;\n"
-"    padding: 8px 16px;\n"
-"color: white;\n"
-"    font-size: 18px;\n"
-"    font-weight: bold;\n"
-"    font-family: \"Arial\";\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: skyblue;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: dodgerblue;\n"
+class Ui_Update_dialog(object):
+    def setupUi(self, Update_dialog):
+        Update_dialog.setObjectName("Update_dialog")
+        Update_dialog.resize(234, 228)
+        Update_dialog.setStyleSheet("QDialog{\n"
+"background-color: white;\n"
 "}")
-        self.gridLayout = QtWidgets.QGridLayout(Update_window)
+        self.gridLayout = QtWidgets.QGridLayout(Update_dialog)
         self.gridLayout.setObjectName("gridLayout")
-        self.progressBar = QtWidgets.QProgressBar(parent=Update_window)
-        self.progressBar.setProperty("value", 24)
-        self.progressBar.setObjectName("progressBar")
-        self.gridLayout.addWidget(self.progressBar, 3, 0, 1, 2)
-        self.label_note = QtWidgets.QLabel(parent=Update_window)
-        self.label_note.setObjectName("label_note")
-        self.gridLayout.addWidget(self.label_note, 0, 0, 1, 2)
-        self.pushButton_cancel = QtWidgets.QPushButton(parent=Update_window)
-        self.pushButton_cancel.setObjectName("pushButton_cancel")
-        self.gridLayout.addWidget(self.pushButton_cancel, 5, 0, 1, 1)
-        self.pushButton_download = QtWidgets.QPushButton(parent=Update_window)
-        self.pushButton_download.setObjectName("pushButton_download")
-        self.gridLayout.addWidget(self.pushButton_download, 5, 1, 1, 1)
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
-        self.gridLayout.addItem(spacerItem, 4, 0, 1, 1)
+        self.label = QtWidgets.QLabel(parent=Update_dialog)
+        self.label.setMaximumSize(QtCore.QSize(100, 100))
 
-        self.retranslateUi(Update_window)
-        QtCore.QMetaObject.connectSlotsByName(Update_window)
+        # Create a QMovie object to display the GIF
+        self.movie = QtGui.QMovie(":/icons/work-in-progress.gif")
+        self.label.setMovie(self.movie)
+        self.movie.start()
 
-    def retranslateUi(self, Update_window):
+        self.label.setObjectName("label")
+        self.label.setScaledContents(True)
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1, QtCore.Qt.AlignmentFlag.AlignHCenter)
+        self.pushButton = QtWidgets.QPushButton(parent=Update_dialog)
+        self.pushButton.setObjectName("pushButton")
+        self.gridLayout.addWidget(self.pushButton, 3, 0, 1, 1)
+        self.label_2 = QtWidgets.QLabel(parent=Update_dialog)
+        font = QtGui.QFont()
+        font.setPointSize(9)
+        self.label_2.setFont(font)
+        self.label_2.setObjectName("label_2")
+        self.gridLayout.addWidget(self.label_2, 2, 0, 1, 1)
+
+        self.retranslateUi(Update_dialog)
+        QtCore.QMetaObject.connectSlotsByName(Update_dialog)
+
+    def retranslateUi(self, Update_dialog):
         _translate = QtCore.QCoreApplication.translate
-        Update_window.setWindowTitle(_translate("Update_window", "Update_window"))
-        self.label_note.setText(_translate("Update_window", "Update size is 24MB"))
-        self.pushButton_cancel.setText(_translate("Update_window", "Cancel"))
-        self.pushButton_download.setText(_translate("Update_window", "Download"))
-
-        self.pushButton_download.clicked.connect(self.start_download)
-        self.pushButton_cancel.clicked.connect(self.stop_download)
-
-######################################## Main funciton ########################################
-
-        cloud = DropboxSync()
-        cloud.token_checker()
-        dropbox_folder_size = int(cloud.get_folder_size("/Download/update_folder")/1000000)
-        self.label_note.setText(f"Update size is {dropbox_folder_size}MB")
-        self.progressBar.setValue(0)
-        self.progressBar.hide()
-        # self.cloud = DropboxSync()
-        self.thread = {}
+        Update_dialog.setWindowTitle(_translate("Update_dialog", "Updater"))
+        self.pushButton.setText(_translate("Update_dialog", "Download"))
+        self.label_2.setText(_translate("Update_dialog", "Please wait..."))
+        
+        
+################# Main ################
+        self.file_info_thread = Loading()
+        self.file_info_thread.send_signal.connect(self.update)
+        self.file_info_thread.start()
         
     
+    def update(self, progress):
+        text = f"BillSathi \nversion: {progress[0]} \nUpdate size: {progress[1]} MB"
+        self.label_2.setText(text)
+        self.label.setPixmap(QtGui.QPixmap(":/icons/compony_logo.png"))
+        
 
-    def start_download(self):
-        self.thread[1] = ThreadClass(parent=None,index=1)
-        self.thread[1].start()
-        self.progressBar.show()
-        self.thread[1].any_signal.connect(self.my_funtion)
-        self.pushButton_download.setEnabled(False)
-        self.downl = DownloadThread()
-        self.downl.finished.connect(self.stop_download)
-        self.downl.start()
-        
-    def stop_download(self):
-        self.thread[1].stop()
-        self.label_note.setText("Download Complete...")
-        # self.progressBar.hide()
-        # self.pushButton_download.setEnabled(True)
-    
-    def my_funtion(self, counter):
-        cnt = counter
-        index = 1
-        if index == 1:
-            self.progressBar.setValue(cnt)
-            
-    # def download_process(self):
-    #     self.cloud.token_checker()
-    #     dropbox_folder_size = int(self.cloud.get_folder_size("/Download/update_folder"))
-    #     print(dropbox_folder_size)
-    #     local_folder_size = 0
-    #     download_flag = 0
-    #     # return
-        
-    #     while int(local_folder_size) < dropbox_folder_size:
-    #         QtWidgets.QApplication.processEvents()
-            
-    #         if download_flag == 0:
-    #             download_flag = 1
-    #             self.cloud.download_changed("./Main_Software/Download_files",'/Download')
-            
-    #         local_folder_size = self.cloud.get_local_folder_size("./Main_Software/Download_files")
-    #         self.update_progress_bar(local_folder_size, dropbox_folder_size)
-            
-    #         QtCore.QThread.msleep(50)  # Simulate some delay
-
-    def update_progress_bar(self, current_size, total_size):
-        progress = int((current_size / total_size) * 100)
-        self.progressBar.setValue(progress)
-        
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Update_window = QtWidgets.QDialog()
-    ui = Ui_Update_window()
-    ui.setupUi(Update_window)
-    Update_window.show()
+    Update_dialog = QtWidgets.QDialog()
+    ui = Ui_Update_dialog()
+    ui.setupUi(Update_dialog)
+    Update_dialog.show()
     sys.exit(app.exec())

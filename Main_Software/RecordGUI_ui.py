@@ -275,7 +275,7 @@ class Ui_record(object):
         # cust = Ui_Customer_Details()
         # cust.update_data(id)
         self.customer_dialog = QtWidgets.QDialog()
-        self.customer_details_ui = Ui_Customer_details()
+        self.customer_details_ui = Ui_Customer_details(self.customer_dialog)
         self.customer_details_ui.setupUi(self.customer_dialog)
         self.customer_details_ui.update_data(id)
         self.customer_dialog.exec()

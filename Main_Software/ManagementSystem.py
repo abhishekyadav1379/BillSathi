@@ -6,6 +6,7 @@ from UdhariGUI_ui import Ui_Udhari_Dialog
 from Labour_Record_ui import Ui_Labour_record
 from stock_new import Ui_Stock
 from RecordGUI_ui import Ui_record
+from Record_v_2 import Ui_Record_v_2
 # from RecordGUI_code import MyRecordDialog
 from NewEntryCode import *
 from settingUI import Ui_Settings,UploadThread
@@ -15,9 +16,9 @@ from PyQt6.QtCharts import QBarCategoryAxis, QBarSeries, QBarSet, QChart, QChart
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QPainter
 from others import Ui_Others
-# from loginUI import Ui_Login
-# from Main import LoginDialog
-
+from PyQt6 import QtWidgets
+# from toaster import QToaster
+# from PyQt5 import QtWidgets
 
 
 class ManagementSystem(QMainWindow, Ui_MainGUI):
@@ -65,8 +66,20 @@ class ManagementSystem(QMainWindow, Ui_MainGUI):
         
     def view_entry(self):
         my_dialog = NewEntry()
+        
         my_dialog.exec()
+
         self.refresh_chart()
+    
+    # def view_entry(self):
+    #     dialog = QDialog()
+    #     ui = NewEntry()
+    #     ui.setupUi(dialog)
+    #     # my_dialog = NewEntry(self.dialog)
+        
+    #     my_dialog.exec()
+
+        # self.refresh_chart()
         
 
     def view_udhari(self):
@@ -79,7 +92,7 @@ class ManagementSystem(QMainWindow, Ui_MainGUI):
 
     def view_daily_record(self):
         dialog = QDialog()
-        ui = Ui_record()
+        ui = Ui_Record_v_2()
 
         ui.setupUi(dialog)
         dialog.exec()

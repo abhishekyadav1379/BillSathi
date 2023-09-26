@@ -44,7 +44,8 @@ class SpeechRecognitionThread(QThread):
                 self.recognition_result.emit("Error")
                 print("Error occurred during speech recognition:", str(e))
 
-class Ui_Entry_Window(object):
+class Ui_Entry_Window(object): 
+    
     def setupUi(self, Entry_Window):
         font = "Russo One"
         Entry_Window.setObjectName("Entry_Window")

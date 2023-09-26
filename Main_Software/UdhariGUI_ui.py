@@ -15,7 +15,8 @@ from All_function import all_function, TooltipDelegate
 import sqlite3
 from EntryGUI_ui import SpeechRecognitionThread
 import icons_rc
-
+from toaster import QToaster
+from Customer_details_v_2 import Ui_Customer_details_v_2
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtWidgets import QApplication
@@ -263,10 +264,11 @@ class Ui_Udhari_Dialog(object):
     # it open the customer detils window when clicked in row
     def open_customer_details_dialog(self, cell_value):
         self.customer_dialog = QtWidgets.QDialog()
-        self.customer_details_ui = Ui_Customer_details()
+        self.customer_details_ui = Ui_Customer_details_v_2(self.customer_dialog)
         self.customer_details_ui.setupUi(self.customer_dialog)
-        self.customer_details_ui.update_data(cell_value)
+        self.customer_details_ui.first_function(cell_value) 
         self.customer_dialog.exec()
+        
 
     def update_table(self):
         # pass

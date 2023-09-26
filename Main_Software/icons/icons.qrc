@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="icons">
+    <file>delete_icon.png</file>
+    <file>icons8-loading.gif</file>
+    <file>work-in-progress.gif</file>
     <file>mahendra_colored_logo.png</file>
     <file>icons8-telegram-480.png</file>
     <file>mahendra_logo.png</file>

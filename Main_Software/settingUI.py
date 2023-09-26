@@ -10,7 +10,7 @@ class UploadThread(QThread):
     def run(self):
         self.stop_flag = False
         fn = all_function()
-        fn.copy_file(r"Main_Software\mahendra.db",r"D:")
+        fn.copy_file(r"Main_Software\Database\mahendra.db",r"D:")
         dropbox = DropboxSync()
         dropbox.upload_changed()
         self.finished.emit()

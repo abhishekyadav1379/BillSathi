@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree with Toggle</title>
+    <style>
+        /* CSS Styles Go Here */
+        .tree {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .tree-item {
+            margin-bottom: 5px;
+            cursor: pointer;
+            padding: 5px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .tree-item:before {
+            content: "\25B6"; /* Unicode character for a right-pointing triangle (▶) */
+            margin-right: 5px;
+            display: inline-block;
+        }
+
+        .tree-item.collapsed:before {
+            content: "\25B7"; /* Unicode character for a down-pointing triangle (▷) */
+        }
+
+        .tree-item ul {
+            display: none;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul class="tree" id="myTree">
+        <li class="tree-item">Parent 1
+            <ul>
+                <li class="tree-item" style="background-color: #e2f0d9; border: 1px solid #b7cf91;">Child 1</li>
+                <li class="tree-item" style="background-color: #fdeada; border: 1px solid #f6c08a;">Child 2</li>
+            </ul>
+        </li>
+        <li class="tree-item">Parent 2
+            <ul>
+                <li class="tree-item" style="background-color: #f0e1e8; border: 1px solid #d9abc7;">Child 3</li>
+                <li class="tree-item" style="background-color: #f9ebea; border: 1px solid #f0b2ad;">Child 4</li>
+            </ul>
+        </li>
+    </ul>
+
+    <script>
+        // JavaScript to toggle the visibility of child nodes
+        const treeItems = document.querySelectorAll(".tree-item");
+        
+        treeItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const ul = item.querySelector("ul");
+                if (ul) {
+                    ul.style.display = ul.style.display === "none" ? "block" : "none";
+                    item.classList.toggle("collapsed");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

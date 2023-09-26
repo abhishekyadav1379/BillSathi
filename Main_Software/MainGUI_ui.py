@@ -59,7 +59,7 @@ class Ui_MainGUI(object):
         MainGUI.resize(1226, 741)
         MainGUI.setMaximumSize(QtCore.QSize(16777215, 16777215))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/compony_logo.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         MainGUI.setWindowIcon(icon)
         MainGUI.setStyleSheet("QWidget {\n"
 "    background-color: rgb(242,240,247);\n"
@@ -356,11 +356,11 @@ class Ui_MainGUI(object):
         self.fn=all_function()
         chart_widget=TestChartWidget()
         chart_widget_Yearly=ChartWidget_Yearly()
-        chart_profit = ChartWidget_Profit()
+        # chart_profit = ChartWidget_Profit()
         MainGUI.showMaximized()
         self.tabWidget.addTab(chart_widget, "Monthly Chart")
         self.tabWidget.addTab(chart_widget_Yearly, "Yearly Chart")
-        self.tabWidget.addTab(chart_profit, "Profit Chart")
+        # self.tabWidget.addTab(chart_profit, "Profit Chart")
         # self.tabWidget.clear()
         self.date=QtCore.QDate.currentDate()
         self.date_label.setText(self.date.toString("dd-MM-yyyy"))
@@ -414,7 +414,7 @@ class Ui_MainGUI(object):
         self.tabWidget.clear()
         self.tabWidget.addTab(TestChartWidget(), "Monthly Chart")
         self.tabWidget.addTab(ChartWidget_Yearly(), "Yearly Chart")
-        self.tabWidget.addTab(ChartWidget_Profit(), "Profit Chart")
+        # self.tabWidget.addTab(ChartWidget_Profit(), "Profit Chart")
 
     def closeEvent(self, event):
         close_popup=QMessageBox(self)

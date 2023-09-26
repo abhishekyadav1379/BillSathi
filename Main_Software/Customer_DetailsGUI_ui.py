@@ -23,9 +23,14 @@ from PyQt6.QtCore import QTimer, QDate
 from NewEntryCode import NewEntry, FloatOrADelegate, FloatOrAValidator
 import webbrowser
 import icons_rc
+from toaster import QToaster
+# from PyQt5 import QtWidgets
 
 
 class Ui_Customer_details(object):
+    def __init__(self, dialog):
+        self.dialog = dialog
+        
     def setupUi(self, Customer_details):
         Customer_details.setObjectName("Customer_details")
         Customer_details.resize(1220, 755)
@@ -445,7 +450,7 @@ class Ui_Customer_details(object):
         self.label_2.setText(_translate("Customer_details", "Cash Flow Details"))
 
 # -------------------------Main Editing-------#
-        self.pushButton_submit.clicked.connect(self.submit_btn)
+        self.pushButton_submit.clicked.connect(self.submit_btn) 
         font = QtGui.QFont()
         font.setPointSize(11)
         self.tableWidget_money.setFont(font)
@@ -633,9 +638,6 @@ class Ui_Customer_details(object):
             val = (cust_id, self.current_date, name,
                    give, total, method, time, comment)
             self.fn.insert_db(query, val)
-            # mycursor.execute(query, val)
-            # mydb.commit()
-            # mydb.close()
 
         except:
             print("Error: in add data customer_details.py")
@@ -656,6 +658,7 @@ class Ui_Customer_details(object):
             self.update_data(self.id_label.text())
             item.setText("")
             self.lineEdit_comment.setText("")
+            QToaster.showMessage("Record is Submitted.",parent = self.dialog, timeout=2000,corner=QtCore.Qt.Corner.TopRightCorner)
 
     def set_cell_background(self, table, row, column, color):
         text = table.item(row, column).text()
@@ -852,15 +855,6 @@ class Ui_Customer_details(object):
 
     def customer_pdf(self):
         id = self.id_label.text()
-        # name = self.name_label.text()
-        # address = self.place_label.text()
-        # phone = self.phone_label.text()
-        # first_row = ["Date", "Product",  "Quantity", "Rate","Value","Time"]
-        # product = self.table_Data(self.tableWidget_desc,6)
-        # product.insert(0,first_row)
-        # first_row = ["Date", "Received",  "Total", "Method","Time"]
-        # money = self.table_Data(self.tableWidget_money,5)
-        # money.insert(0,first_row)
         InvoicePdf.generate_customer_details(id)
         self.open_pdf_in_default_browser()
 
@@ -894,6 +888,7 @@ class Ui_Customer_details(object):
         content = f"{id}\n{name}\n{address}\n{phone}"
         InvoicePdf.generate_customer_details(id)
         self.fn.send_pdf_with_text_to_telegram(r"./Main_Software/Image_pdf/customer_details.pdf",f"{name}_{id}.pdf",content)
+        QToaster.showMessage("File send to Telegram.",parent = self.dialog, timeout=2000,corner=QtCore.Qt.Corner.TopRightCorner)
         
     def send_message_to_telegram(self):
         id,name,address,phone = self.id_label.text(),self.name_label.text(),self.place_label.text(),self.phone_label.text()
@@ -909,5 +904,6 @@ class Ui_Customer_details(object):
 धन्यवाद
 न्यू महेंद्रा ट्रेडर्स'''
         self.fn.send_message_to_telegram(message)
+        QToaster.showMessage("Message send to Telegram.",parent = self.dialog, timeout=2000,corner=QtCore.Qt.Corner.TopRightCorner)
         
         

@@ -133,20 +133,13 @@ class Ui_Login(object):
         self.headline_label_2.setText(_translate("Login", "Where Invoicing Meets Simplicity"))
 
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     Login = QtWidgets.QDialog()
-#     ui = Ui_Login()
-#     ui.setupUi(Login)
-#     Login.show()
-#     sys.exit(app.exec())
 
 #################################################################################
 #                               Login Class                                     #
 #################################################################################
         self.user_id = ""
         self.lineEdit_id.setText("Mahendra")
+        self.fn = all_function()
         # self.config
         # self.class_DropBox_instance = DropboxSync(self)
         self.lineEdit_password.setEchoMode(
@@ -166,6 +159,9 @@ class Ui_Login(object):
     def getRecord(self):
         userid = self.lineEdit_id.text() or ""
         userpass = self.lineEdit_password.text() or ""
+        value = self.fn.select_mysql_db(f"SELECT * FROM login_info where id = '{userid}'")
+        print(value)
+        return value
         # Connect to the MySQL database
         try:
             conn = mysql.connector.connect(
@@ -203,7 +199,7 @@ class Ui_Login(object):
         if id.text() == "imposter":
             self.loginsucess = 1
             return
-        self.incorrect_label.setText("Please Wait")
+        # self.incorrect_label.setText("Please Wait")
         data = self.getRecord()
         if data == "No_Internet":
             self.incorrect_label.setText("No  Internet Connection")
@@ -231,11 +227,11 @@ class Ui_Login(object):
         else:
             self.incorrect_label.setText("Incorrect ID or password")
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtWidgets.QApplication(sys.argv)
-#     Login = QtWidgets.QDialog()
-#     ui = Ui_Login()
-#     ui.setupUi(Login)
-#     Login.show()
-#     sys.exit(app.exec())
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Login = QtWidgets.QDialog()
+    ui = Ui_Login()
+    ui.setupUi(Login)
+    Login.show()
+    sys.exit(app.exec())
